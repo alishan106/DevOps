@@ -1,0 +1,92 @@
+<template>
+    <lightning-card title="My Publisher Component" icon-name="custom:custom101">
+        <template if:true={inputValue}>
+        <lightning-layout horizontal-align="center" vertical-align="end">
+            <div class="slds-var-p-right_medium">
+                <lightning-layout-item>
+                    <lightning-combobox
+                        name="Product"
+                        value={product}
+                        placeholder="Select Product"
+                        options={products}
+                        onchange={handleProductChange} >
+                    </lightning-combobox>
+                </lightning-layout-item>
+            </div>
+            <div class="slds-var-p-right_medium">
+                <lightning-layout-item>
+                    <lightning-combobox
+                        name="Quantity"
+                        value={quantity}
+                        placeholder="Select Quantity"
+                        options={quantities}
+                        onchange={handleQuantityChange} >
+                    </lightning-combobox>
+                </lightning-layout-item>
+            </div>
+            <div class="slds-var-p-right_medium">
+                <lightning-layout-item>
+                    <lightning-input type="number" name="number" placeholder="Enter Amount" value={amount} onchange={handleAmountChange}></lightning-input>
+                </lightning-layout-item>
+            </div>
+            <div class="slds-var-p-right_medium">
+                <lightning-layout-item>
+                    <lightning-button label="Add To Cart" variant="Brand" onclick={handleClick}></lightning-button>
+                </lightning-layout-item>
+            </div> 
+        </lightning-layout>
+    </template>
+        <template if:true={showListValue}>
+            <table class="slds-table slds-table_bordered slds-table_cell-buffer slds-table_col-bordered slds-table_striped slds-m-top_small">
+                <thead>
+                    <tr class="slds-text-title_caps">
+                        <th>
+                            #
+                        </th>
+                        <th>
+                            Product
+                        </th>
+                        <th>
+                            Quantity
+                        </th>
+                        <th>
+                            Amount
+                        </th>
+                        <th>
+                            Delete
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <template for:each={dataList} for:item="data">
+                        <tr key={data.serialNumber}>
+                            <td>{data.serialNumber}</td>
+                            <td>{data.product}</td>
+                            <td>
+                                <lightning-combobox
+                                    name="changeQuantity"
+                                    data-id={data.serialNumber}
+                                    value={data.quantity}
+                                    options={quantities}
+                                    onchange={handleQuantityChange} >
+                                </lightning-combobox>
+                            </td>
+                            <td>
+                                <lightning-input type="number" name="changeNumber" data-id={data.serialNumber} value={data.amount} onchange={handleAmountChange}></lightning-input>
+                            </td>
+                            <td>
+                                <div class="sdls-m-around_medium">
+                                    <img name="image" style="height:50px; width:50px;" onclick={handleImage} data-id={data.serialNumber}>
+                                </div>
+                            </td>
+                        </tr>
+                    </template>
+                </tbody>
+            </table>
+            <div class="slds-align_absolute-center slds-m-top_small">
+                <lightning-button label="Save" variant="Brand" onclick={handleSaveUpdatedList}></lightning-button>
+            </div>
+            </template>
+    </lightning-card>
+    
+</template>

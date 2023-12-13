@@ -1,0 +1,36 @@
+<apex:page showHeader="false" controller="RestAPIProjectController">
+    <apex:form id="frm">
+    <apex:pageBlock >
+    	<apex:pageBlockSection columns="2" >
+            <apex:pageBlockSectionItem >
+                <apex:selectList size="1" value="{!selectedMethod}" >
+                <apex:selectOptions value="{!items}" />
+                    <apex:actionSupport event="onchange" rerender="frm" />  
+                </apex:selectList>
+            </apex:pageBlockSectionItem> 
+            <apex:pageBlockSectionItem >
+                <apex:selectList size="1" value="{!selectedObject}" >
+                <apex:selectOptions value="{!objitems}" />
+                    <apex:actionSupport event="onchange" rerender="frm" />  
+                </apex:selectList>
+            </apex:pageBlockSectionItem> 
+        
+        </apex:pageBlockSection>
+        <apex:pageBlockSection columns="1" rendered="{!IF(selectedMethod =='getRecord', true, false)}">
+        	<div class="slds-form-element__control">
+ 				<apex:inputText value="{!recordId}" html-placeholder="Enter Record ID" />
+                <apex:commandButton title="GET Record" action="{!updateAggriment}" />
+                <apex:outputText >Result : {!result}</apex:outputText>
+            </div>        
+        </apex:pageBlockSection>
+        <apex:pageBlockSection columns="1" rendered="{!IF(selectedMethod =='insertRecords', true, false)}">
+        <apex:outputText >POST</apex:outputText>
+        
+        </apex:pageBlockSection>
+        <apex:pageBlockSection columns="1" rendered="{!IF(selectedMethod =='updateRecords', true, false)}">
+        <apex:outputText >PATCH</apex:outputText>
+        
+        </apex:pageBlockSection>
+    </apex:pageBlock>
+    </apex:form>
+</apex:page>

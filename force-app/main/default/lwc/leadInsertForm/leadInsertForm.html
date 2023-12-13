@@ -1,0 +1,44 @@
+<template>
+    <lightning-card title="Lead Insert Form" class="slds-p-around_small slds-m-around_small">
+            <!-- <lightning-record-form
+                object-api-name="Lead"
+                fields={myFields}
+                columns="2"
+                onsuccess={handleSubmit}>
+            </lightning-record-form>  -->
+            <lightning-layout class="layoutAlignCenter">
+                <lightning-layout-item size="1" class="slds-m-horizontal_medium">
+                    <span class="required"></span><lightning-formatted-text value="Last Name"></lightning-formatted-text>
+                </lightning-layout-item>
+                <lightning-layout-item size="4" class="slds-m-horizontal_medium">
+                    <lightning-input type="text" class="inpFrm"></lightning-input>
+                </lightning-layout-item>
+                <lightning-layout-item size="1" class="slds-m-horizontal_medium">
+                    <span class="required"></span><lightning-formatted-text value="Lead Status"></lightning-formatted-text>
+                </lightning-layout-item>
+                <lightning-layout-item size="4" class="slds-m-horizontal_medium">
+                    <lightning-combobox options={statusOptions} class="inpFrm"></lightning-combobox>
+                </lightning-layout-item>
+                </lightning-layout>
+                <lightning-layout style="align-items: center;">
+                <lightning-layout-item size="1" class="slds-m-horizontal_medium">
+                    <span class="required"></span><lightning-formatted-text value="Company"></lightning-formatted-text>
+                </lightning-layout-item>
+                <lightning-layout-item size="4" class="slds-m-horizontal_medium">
+                    <lightning-input type="text" class="inpFrm"></lightning-input>
+                </lightning-layout-item>
+                <lightning-layout-item size="1" class="slds-m-horizontal_medium">
+                    <lightning-formatted-text value="Email"></lightning-formatted-text>
+                </lightning-layout-item>
+                <lightning-layout-item size="4" class="slds-m-horizontal_medium">
+                    <lightning-input type="Email" class="inpFrm"></lightning-input>
+                </lightning-layout-item>
+            </lightning-layout>
+            <lightning-layout>
+                <lightning-layout-item size="6" class="slds-m-around_medium" >
+                    <lightning-button type="submit" variant="brand" onclick={handleSubmit} label="Save" class="saveFloat"></lightning-button>
+                    <lightning-button type="submit" label="Cancel" class="cancelFloat" onclick={handleCancel}></lightning-button>
+                </lightning-layout-item>
+            </lightning-layout>    
+    </lightning-card>    
+</template>

@@ -1,0 +1,22 @@
+<apex:page showHeader="false" tabStyle="Student__c" title="Bulk Records Insertion" Controller="BulkInsertStudentDetails" >
+    <apex:form >
+        <apex:messages />
+        <apex:pageBlock title="Insert Student Records">
+            <apex:pageBlockButtons >
+                <apex:commandButton value="Save" action="{!addAllRecord}"/>
+                <apex:commandButton value="Cancel" action="{!cancel}" />
+            </apex:pageBlockButtons>
+            <apex:pageBlockTable value="{!addstudentsList}" var="addStudent">
+                <apex:column headerValue="First Name">
+                    <apex:inputField value="{!addStudent.Name}" />
+                </apex:column>
+                <apex:column headerValue="Last Name">
+                    <apex:inputField value="{!addStudent.Last_Name__c}" />
+                </apex:column>
+                <apex:column headerValue="Course">
+                    <apex:inputField value="{!addStudent.Class__c}" />
+                </apex:column>
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

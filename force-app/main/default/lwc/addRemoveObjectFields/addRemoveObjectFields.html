@@ -1,0 +1,46 @@
+<template>
+    <lightning-card class="slds-p-around_medium">
+
+        <div class="slds-m-around_small fixedElement">
+            <lightning-button slot="actions" label="Add Row" class="slds-p-around_small" variant="brand"
+                onclick={addRow} disabled={isDisabled} style="float: right; position:fixed; right:20px; top:100px;"></lightning-button>
+        </div>
+        <div class="slds-m-around_x_small">
+            <table class="slds-table slds-table_bordered" cellpadding="2px">
+                <thead>
+
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <!-- <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right slds-is-open" 
+                        role="none">
+                            <lightning-input class="slds-has-focus input-box setWidth" autocomplete="off" type="text" 
+                            name="input1" value = {selectedLabel}
+                                placeholder='Type to Filter List' data-id="searchInput"  
+                                variant='label-hidden' onchange={showSearchResults} 
+                                onfocus={showSearchResults} onclick={showSearchResults}>
+                                
+                            </lightning-input>
+                        </div>-->
+                            <template if:true={showRows}>
+                                <template if:true={rows} for:each={rows} for:item="row">
+                                    <c-filter-criteria key={row.Id} display-index={row.displayIndex}
+                                        onremoverow={handleRemoveRow} field-list={objectFields}
+                                        selected-field={row.selectedField} selected-value={row.selectedValue}
+                                        onselectedvalue={handleSelectedValue}></c-filter-criteria>
+                                </template>
+                            </template>
+                        </td>
+                    </tr>
+                    <!-- <template if:true = {rows} for:each={rows} for:item="row">
+                            <c-add-remove-object-child key = {row.Id} display-index = {row.displayIndex}
+                            onremoverow = {handleRemoveRow} field-list = {objectFields}
+                            ></c-add-remove-object-child>
+                        </template> 
+                    -->
+                </tbody>
+            </table>
+        </div>
+    </lightning-card>
+</template>

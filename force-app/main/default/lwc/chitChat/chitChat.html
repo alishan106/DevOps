@@ -1,0 +1,29 @@
+<template>
+    <lightning-layout>
+        
+        <lightning-layout-item size="12">
+            <div class="slds-scrollable_y" style="height:20rem;width:100%">
+            <template for:each = {chatList} for:item ="chats" for:index="index">                                 
+                <div class="container" key={chats}>
+                <p class="UserName">{chats.User_Name__c}</p><br/>
+                <p>{chats.Messages__c}</p>
+                <span class="time-right">{chats.Chat_Date__c}</span>
+                </div>
+        </template>        
+        </div>
+        </lightning-layout-item>
+    </lightning-layout>
+
+<lightning-layout horizontal-align="center" vertical-align="end">
+    <!-- <div > -->
+        <lightning-layout-item class="slds-var-m-top_large slds-var-p-right_small" size="8">
+            <lightning-input type="text" onchange={habdleInput} value={inputVale} data-id="reset"></lightning-input>
+        </lightning-layout-item>
+    
+   
+    <lightning-layout-item size="1">
+        <lightning-button class= "btn" label="Send" variant="success" onclick={habdleClick} disabled={requiredInp}></lightning-button>
+    </lightning-layout-item>
+</lightning-layout>
+
+</template>

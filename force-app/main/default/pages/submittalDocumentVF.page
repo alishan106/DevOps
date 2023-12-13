@@ -1,0 +1,90 @@
+<apex:page controller="SubmittleDocumentsController" showHeader="false" contentType="application/msword#filename.doc" applyHtmlTag="false" applyBodyTag="false">
+    <!-- showHeader="false" contentType="application/msword#filename.doc" applyHtmlTag="false" applyBodyTag="false" -->
+    <!-- standardStylesheets="false" showHeader="false" sidebar="false" applyHtmlTag="false" applyBodyTag="false" renderAs="pdf" -->
+    <div class="slds-m-around_x-large">
+        <div class="slds-p-horizontal_x-large">
+             <apex:image url="{!$Resource.e_Health_Logo}" style="float: right;padding:1%;" />
+           <!-- <img src="https://media-exp1.licdn.com/dms/image/C560BAQFDdoOjRb8rBA/company-logo_200_200/0/1638296622815?e=2147483647&v=beta&t=Boktx-bBStb1rz8oOCAa3A_8WrymrEk0Wplx1RYM6zo" style="width:200px;float: right;margin-right: 30%;" /> -->
+                 <!--<img class="logo" src="http://images.google.com/intl/en_ALL/images/logos/images_logo_lg.gif"/>-->
+                <p style="font-size:12pt;">
+                    <strong>Name:</strong> {!conObj.FirstName} {!conObj.LastName}
+                </p>
+                <p style="font-size:12pt;"><strong>Job: </strong>{!conObj.Designation__c}
+                </p>
+            	<br/>
+                <!--<apex:image url="{!$Resource.e_Health_Logo}" width="50" height="50" /> -->
+                <!--<img src="http://images.google.com/intl/en_ALL/images/logos/images_logo_lg.gif"/> -->
+            
+            <table style="border: 1px solid #000;border-collapse:collapse;align:center;margin:10% auto auto auto; width:100%;">
+                <thead>
+                    <tr>
+                        <th style="text-align:center;font-size:15.0pt;line-height:100%;color:#194F6E; padding:10px;border: 1px solid #000;border-collapse:collapse;">You asked for</th>
+                        <th style="text-align:center;font-size:15.0pt;line-height:100%;color:#194F6E; padding:10px;border: 1px solid #000;border-collapse:collapse;">Candidate has</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="text-align:center;font-size:12pt; line-height: 100%;padding:10px;border: 1px solid #000;border-collapse:collapse;">{!conObj.Email}</td>
+                        <td style="text-align:center;font-size:12pt; line-height: 100%;padding:10px;border: 1px solid #000;border-collapse:collapse;">{!conObj.AccountId}</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:center;font-size:12pt; line-height: 100%;padding:10px;border: 1px solid #000;border-collapse:collapse;">{!conObj.Birthday__c}</td>
+                        <td style="text-align:center;font-size:12pt; line-height: 100%;padding:10px;border: 1px solid #000;border-collapse:collapse;">{!conObj.Salary__c}</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:center;font-size:12pt; line-height: 100%;padding:10px;border: 1px solid #000;border-collapse:collapse;">{!conObj.Department}</td>
+                        <td style="text-align:center;font-size:12pt; line-height: 100%;padding:5px;border: 1px solid #000;border-collapse:collapse;">{!conObj.Type__c}</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:center;font-size:12pt; line-height: 100%;padding:10px;border: 1px solid #000;border-collapse:collapse;">{!conObj.Increment__c}</td>
+                        <td style="text-align:center;font-size:12pt; line-height: 100%;padding:10px;border: 1px solid #000;border-collapse:collapse;">{!conObj.Phone}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <br/>
+            <div>
+                <p><b>At a glance:</b></p>
+            </div>
+            <div class="slds-p-around_x-large">
+                <ul>
+                    <apex:repeat value="{!glance}" var="string" id="theRepeat">
+                        <li style="font-size:12pt; color:#181818;list-style-type: disc; margin:10px;padding:5px;">{!string}</li>
+                    </apex:repeat>
+                </ul>
+            </div>
+            <div>
+                <p style="line-height:normal; margin:20px;"><b>Motivation for change: </b><span> {!conObj.Parent_Account_Name__c}</span></p>
+            </div>
+            <div>
+                <p style="line-height:normal; margin:20px;"><b>Short stint explanation: </b><span>{!conObj.Net_Salary__c}</span></p>
+            </div>
+            <div>
+                <p style="line-height:normal; margin:20px;"><b>Availability to interview: </b><span>{!conObj.Increment_Date__c}</span></p>
+            </div>
+            <div style="margin:40px 0px 40px 0px;">
+                <p style="line-height:normal; margin:20px;"><b>Expected Compensation:</b></p>
+            </div>
+            <div>
+                <p style="line-height:normal; margin:20px;"><b>Base: </b><span> {!conObj.Languages__c}</span></p>
+            </div>
+            <div>
+                <p style="line-height:normal; margin:20px;"><b>Bonus: </b><span> {!conObj.Level__c}</span></p>
+            </div>
+            <div>
+                <p style="line-height:normal; margin:20px;"><b>Benefits: </b><span>{!conObj.Parent_Account_Name__c}</span></p>
+            </div>
+            <div>
+                <p style="line-height:normal; margin:20px;"><b>Vacation: </b><span>{!conObj.Designation__c}</span></p>
+            </div>
+            <div>
+                <p style="line-height:normal; margin:20px;"><b>401K: </b><span>{!conObj.Type__c}</span></p>
+            </div>
+            <div>
+                <p style="line-height:normal; margin:20px;"><b>Other: </b><span>{!conObj.Birthday__c}</span></p>
+            </div>
+            <!-- <div>
+                <p style="line-height:normal; margin:20px;"><b>Resume: </b><b><span>(Copy and paste resume here with your edits and highlighter to point out important points)</span></b></p>
+            </div> -->
+        </div>
+    </div>
+</apex:page>

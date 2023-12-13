@@ -1,0 +1,30 @@
+<apex:page showHeader="false" tabStyle="Contact" applyHtmlTag="false" >
+    <style>
+    	.body{
+        padding:100px;
+        margin:50px;
+        };
+        .h1{ 
+        font-size:100px;
+        };
+    </style>
+    <apex:pageBlock >
+        <apex:pageBlockSection >
+            <apex:pageBlockSectionItem >
+            <apex:image url="{!$Resource.iBirds_logo}" height="100" width="200"/>
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem >
+            
+    </apex:pageBlockSectionItem>
+    
+    </apex:pageBlockSection>
+        <apex:pageBlockSection >
+            <h1 class="h1">
+                INVOICE
+            </h1>
+        </apex:pageBlockSection>
+    <apex:pageBlockSection title="" collapsible="false">
+    
+    </apex:pageBlockSection>
+    </apex:pageBlock>
+</apex:page>

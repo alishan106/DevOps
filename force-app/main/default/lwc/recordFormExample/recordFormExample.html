@@ -1,0 +1,237 @@
+<template>
+	<!-- <lightning-card title="Add Backs" class="slds-p-around_small slds-m-around_small">
+		<div class="slds-p-around_xx-small">
+			<lightning-record-view-form object-api-name={objectApiName} record-id={recordId}>
+				<template if:true={tbl}>
+					<table class="slds-table slds-table_cell-buffer slds-table_bordered">
+					<tr>
+						<th colspan="2">
+							<b><lightning-formatted-text value="Data Range"></lightning-formatted-text></b>
+						</th>
+						<template for:each={tbl} for:item="tb">
+						<th key={tb.DateRange}>
+							<b><lightning-formatted-text value={tb.DateRange}></lightning-formatted-text></b>
+							
+						</th>
+						</template>
+					</tr>
+					<tr>
+						<th colspan="2">
+							<b><lightning-formatted-text value="Depreciation"></lightning-formatted-text></b>
+						</th>
+						<template for:each={tbl} for:item="tb">
+						<th key={tb.DateRange}>
+							<lightning-formatted-text value={tb.Depreciation}></lightning-formatted-text>
+							
+						</th>
+						</template>
+					</tr>
+					<tr>
+						<th colspan="2">
+							<b><lightning-formatted-text value="Amortisation"></lightning-formatted-text></b>
+						</th>
+						<template for:each={tbl} for:item="tb">
+						<th key={tb.DateRange}>
+							<lightning-formatted-text value={tb.Amortisation}></lightning-formatted-text>
+							
+						</th>
+						</template>
+					</tr>
+					<tr>
+						<th colspan="2">
+							<b><lightning-formatted-text value="Donations"></lightning-formatted-text></b>
+						</th>
+						<template for:each={tbl} for:item="tb">
+						<th key={tb.DateRange}>
+							<lightning-formatted-text value={tb.Donations}></lightning-formatted-text>
+						</th>
+						</template>
+					</tr>
+					<tr>
+						<th colspan="2">
+							<b><lightning-formatted-text value="Related Party Income Split Salary"></lightning-formatted-text></b>
+						</th>
+						<template for:each={tbl} for:item="tb">
+						<th key={tb.DateRange}>
+							<lightning-formatted-text value={tb.RelatedPartyIncomeSplitSalary}></lightning-formatted-text>
+						</th>
+						</template>
+					</tr>
+					<tr>
+						<th colspan="2">
+							<b><lightning-formatted-text value="Related Party Income Split Super"></lightning-formatted-text></b>
+						</th>
+						<template for:each={tbl} for:item="tb">
+						<th key={tb.DateRange}>
+							<lightning-formatted-text value={tb.RelatedPartyIncomeSplitSuper}></lightning-formatted-text>
+						</th>
+						</template>
+					</tr>
+					<tr>
+						<th colspan="2">
+							<b><lightning-formatted-text value="Loss on Sale of an Asset"></lightning-formatted-text></b>
+						</th>
+						<template for:each={tbl} for:item="tb">
+						<th key={tb.DateRange}>
+							<lightning-formatted-text value={tb.LossonSaleofanAsset}></lightning-formatted-text>
+						</th>
+						</template>
+					</tr>
+					<tr>
+						<th>
+							
+						</th>
+						<th>
+							<b><lightning-formatted-text value={percentageLabel} linkify></lightning-formatted-text></b>
+						</th>
+						<template for:each={tbl} for:item="tb">
+						<th key={tb.DateRange}>
+							
+						</th>
+						</template>
+					</tr>
+					<tr>
+						<th>
+							<b><lightning-formatted-text value={motorLabel} linkify></lightning-formatted-text></b>
+						</th>
+						<th>
+							<lightning-formatted-text value="10%"></lightning-formatted-text>
+						</th>
+						<template for:each={tbl} for:item="tb">
+						<th key={tb.DateRange}>
+							<lightning-formatted-text value={tb.MotorVehicle}></lightning-formatted-text>
+						</th>
+						</template>
+					</tr>
+					<tr>
+						<th>
+							<b><lightning-formatted-text value={utilitiesTeleLabel} linkify></lightning-formatted-text></b>
+						</th>
+						<th>
+							<lightning-formatted-text value="10%"></lightning-formatted-text>
+						</th>
+						<template for:each={tbl} for:item="tb">
+						<th key={tb.DateRange}>
+							<lightning-formatted-text value={tb.UtilitiesTelecomms}></lightning-formatted-text>
+						</th>
+						</template>
+					</tr>
+					<tr>
+						<th>
+							<b><lightning-formatted-text value={utilitiesRentLabel} linkify></lightning-formatted-text></b>
+						</th>
+						<th>
+							<lightning-formatted-text value="10%"></lightning-formatted-text>
+						</th>
+						<template for:each={tbl} for:item="tb">
+						<th key={tb.DateRange}>
+							<lightning-formatted-text value={tb.UtilitiesRent}></lightning-formatted-text>
+						</th>
+						</template>
+					</tr>
+					<tr>
+						<th>
+							<b><lightning-formatted-text value={utilitiesMortgageLabel} linkify></lightning-formatted-text></b>
+						</th>
+						<th>
+							<lightning-formatted-text value="10%"></lightning-formatted-text>
+						</th>
+						<template for:each={tbl} for:item="tb">
+						<th key={tb.DateRange}>
+							<lightning-formatted-text value={tb.UtilitiesMortgage}></lightning-formatted-text>
+						</th>
+						</template>
+					</tr>
+					<tr>
+						<th>
+							<b><lightning-formatted-text value={utilitiesElectricityLabel} linkify></lightning-formatted-text></b>
+						</th>
+						<th>
+							<lightning-formatted-text value="10%"></lightning-formatted-text>
+						</th>
+						<template for:each={tbl} for:item="tb">
+						<th key={tb.DateRange}>
+							<lightning-formatted-text value={tb.UtilitiesElectricity}></lightning-formatted-text>
+						</th>
+						</template>
+					</tr>
+					<tr>
+						<th>
+							<b><lightning-formatted-text value="Actions"></lightning-formatted-text></b>
+						</th>
+						<th>
+							<lightning-button variant="base" label="Edit"></lightning-button>
+						</th>
+						<template for:each={tbl} for:item="tb">
+						<th key={tb.DateRange}>
+							
+						</th>
+						</template>
+					</tr>
+					<tr>
+						<th colspan="2">
+							<b><lightning-formatted-text value="Fines and Penalties"></lightning-formatted-text></b>
+						</th>
+						<template for:each={tbl} for:item="tb">
+						<th key={tb.DateRange}>
+							<lightning-formatted-text value={tb.FinesandPenalties}></lightning-formatted-text>
+						</th>
+						</template>
+					</tr>
+					<tr>
+						<th colspan="2">
+							<b><lightning-formatted-text value="Additional Expenses/Add Backs"></lightning-formatted-text></b>
+						</th>
+						<template for:each={tbl} for:item="tb">
+						<th key={tb.DateRange}>
+							<lightning-formatted-text value={tb.AdditionalExpensesAddBacks}></lightning-formatted-text>
+						</th>
+						</template>
+					</tr>
+					<tr>
+						<th colspan="2">
+							<b><lightning-formatted-text value="Total Add Backs"></lightning-formatted-text></b>
+						</th>
+						<template for:each={tbl} for:item="tb">
+						<th key={tb.DateRange}>
+							<lightning-formatted-text value={tb.TotalAddBacks}></lightning-formatted-text>
+						</th>
+						</template>
+					</tr>
+					<tr>
+						<th colspan="2">
+							<b><lightning-formatted-text value="Actions"></lightning-formatted-text></b>
+						</th>
+						<template for:each={tbl} for:item="tb">
+						<th key={tb.DateRange}>
+							<lightning-button variant="base" label="Edit"></lightning-button>
+						</th>
+						</template>
+					</tr>
+					</table>
+				</template>
+			</lightning-record-view-form>
+			<div>
+				<lightning-record-edit-form record-id={recordId} object-api-name="Opportunity" onsuccess={handleSuccess}
+					onsubmit={handleSubmit}>
+					<lightning-messages>
+					</lightning-messages>
+					<b><lightning-Input-field field-name="Amount" class="oppAmt" onchange={handleChange}>
+					</lightning-Input-field></b>
+				</lightning-record-edit-form>
+			</div>
+			<div style="text-align:right">
+<lightning-formatted-text value="Email info@salesforce.com" style="text-align:center"></lightning-formatted-text>
+			</div>		
+</div>
+	</lightning-card> -->
+
+	<div class="slds-form-element_horizontal">
+        <div class="slds-grid">
+            <lightning-input name="textield" class="slds-col" type="text" label="Name" >
+            </lightning-input>
+            <lightning-input name="textield" class="slds-col" type="text" label="Last Name">
+            </lightning-input>
+        </div>
+	</div>
+</template>

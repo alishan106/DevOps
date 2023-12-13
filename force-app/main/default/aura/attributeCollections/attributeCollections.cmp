@@ -1,0 +1,112 @@
+<aura:component implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,force:appHostable" controller="ContactAuraController" access="global">
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:attribute name="name" type="string" access="global" default="No Name"></aura:attribute>
+    <aura:attribute name="isModalOpen" type="boolean" default="false"/>
+    <aura:attribute name="recordId" type="Id"/>
+    <aura:attribute name="age" type="integer" access="global" default="18"></aura:attribute>
+    <aura:attribute name="flag" type="boolean" access="global" default="false"></aura:attribute>
+    <lightning:navigation aura:id="navigation"/>
+    <aura:attribute name="object" type="Contact[]" access="global"></aura:attribute>
+    <aura:attribute name="listofString" type="string[]" access="global" default="['str1','str2','str3', 'str4']"></aura:attribute>
+    <aura:attribute name="listName" type="List" access="global" default="['item1',2,'item3',4]"></aura:attribute>
+    <aura:attribute name="setName" type="Set" access="global" default="['name', 2, 'name', 2]"></aura:attribute>
+    <aura:attribute name="mapName" type="Map" access="global"></aura:attribute>
+    <aura:attribute name="sObject" type="Contact" access="global" default="{
+        sObjectName : 'Contact',
+        LastName: '',
+        Email : '',
+        Phone : ''
+    }"></aura:attribute>
+    
+    <div class="slds-m-around_medium">
+        <lightning:card class="slds-p-around_small">
+            <lightning:input type="text" aura:id="conFrm" label="Last Name" value="{!v.sObject.LastName}" required="true"></lightning:input>
+            <lightning:input type="Email" aura:id="conFrm" label="Email" value="{!v.sObject.Email}" required="true"></lightning:input>
+            <lightning:input type="tel" aura:id="conFrm" label="Phone" value="{!v.sObject.Phone}" required="true"></lightning:input>
+            <lightning:button type="submit" label="Save" onclick="{!c.saveCon}" class="slds-m-top_small"></lightning:button>
+        </lightning:card>
+        <lightning:card class="slds-p-around_small">
+            <h1>{!v.name}</h1>    
+    <h1>{!v.age}</h1>
+    <h1>{!v.flag}</h1>
+    <aura:iteration items="{!v.listofString}" var="itm">
+        <h1>{!itm}</h1>
+    </aura:iteration>
+    <aura:iteration items="{!v.listName}" var="itm">
+        <h1>{!itm}</h1>
+    </aura:iteration>
+    <aura:iteration items="{!v.setName}" var="itm">
+        <h1>{!itm}</h1>
+    </aura:iteration>
+    <aura:iteration items="{!v.mapName}" var="cus">
+            <h1>Key : {!cus.key} Value : {!cus.value}</h1>
+        </aura:iteration>
+        <lightning:layout class="slds-p-around_medium">
+            <lightning:layoutItem size="2">
+                <b>Last Name</b>
+            </lightning:layoutItem>
+            <lightning:layoutItem size="2">
+                <b>Email</b>
+            </lightning:layoutItem>
+            <lightning:layoutItem size="2">
+                <b>Phone</b>
+            </lightning:layoutItem>
+        </lightning:layout>
+        <aura:iteration items="{!v.object}" var="itm">            
+            <lightning:layout>
+            <lightning:layoutItem size="2">
+                <lightning:icon iconName="standard:contact" size="small" alternativeText="Indicates approval" class="slds-m-around_small" />{!itm.LastName}
+            </lightning:layoutItem>
+            <lightning:layoutItem size="2">
+                <lightning:icon iconName="standard:email" size="small" alternativeText="Indicates approval" class="slds-m-around_small" />{!itm.Email}
+            </lightning:layoutItem>
+            <lightning:layoutItem size="2">
+                <lightning:icon iconName="standard:call" size="small" alternativeText="Indicates approval" class="slds-m-around_small" />{!itm.Phone}
+            </lightning:layoutItem>
+            <lightning:layoutItem size="2">
+            <lightning:button value="{!itm.Id}" variant="brand" label="View Details in Popup" onclick="{!c.getMyId }"/>
+            </lightning:layoutItem>
+            <lightning:layoutItem size="2">
+            <lightning:button value="{!itm.Id}" label="View in Standerd Details Page" onclick="{!c.navigateUrl}"/>
+            </lightning:layoutItem>
+        </lightning:layout>
+        </aura:iteration>
+
+        <aura:if isTrue="{!v.isModalOpen}">
+             
+            <!-- Modal/Popup Box starts here-->
+            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container">
+                    <!-- Modal/Popup Box Header Starts here-->
+                    <header class="slds-modal__header">
+                        <lightning:buttonIcon iconName="utility:close"
+                                              onclick="{! c.closeModel }"
+                                              alternativeText="close"
+                                              variant="bare-inverse"
+                                              class="slds-modal__close"/>
+                        <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Contact Details</h2>
+                    </header>
+                    <!--Modal/Popup Box Body Starts here-->
+                    <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                        <lightning:recordForm
+                            recordId="{!v.recordId}"
+                            objectApiName="Contact"
+                            layoutType="Full"
+                            columns="2"
+                            mode="readonly" />
+                    </div>
+                    <!--Modal/Popup Box Footer Starts here-->
+                    <footer class="slds-modal__footer">
+                        <lightning:button variant="neutral"
+                                          label="Cancel"
+                                          title="Cancel"
+                                          onclick="{! c.closeModel }"/>
+                    </footer>
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+        </aura:if>
+        </lightning:card>
+    </div>
+</aura:component>

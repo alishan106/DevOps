@@ -1,0 +1,13 @@
+<template>
+	<lightning-card title="Parent">
+		<h1>This is Parent !!</h1>
+        <p>{childMessage}</p>
+		<template if:true={childTrue}>
+			<c-child-test parent-message={message} oncallparent={updateMessage}></c-child-test>
+		</template>
+		<template if:true={parentButton}>
+			<lightning-button label="Show Child" onclick={viewChild}></lightning-button>
+            <!-- <lightning-button label="Show Child" onclick={sendMessageChild}></lightning-button> -->
+		</template>
+	</lightning-card>
+</template>

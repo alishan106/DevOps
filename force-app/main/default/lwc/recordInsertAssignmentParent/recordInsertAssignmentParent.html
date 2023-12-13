@@ -1,0 +1,72 @@
+<template>
+<lightning-card>
+    <lightning-layout class="slds-p-left_medium">
+        <lightning-layout-item size="4">
+    <c-records-insert-assignment onprogressvaluechange={hanldeProgressValueChange} ></c-records-insert-assignment>
+    <br/>
+    </lightning-layout-item>
+    </lightning-layout>
+    <template if:true={fieldsResult}>
+    <div class="slds-p-left_medium">
+    <lightning-layout>
+        <lightning-layout-item size="3">
+    <!-- <lightning-pill-container items={fieldsResult}></lightning-pill-container> -->
+    <div class="slds-border_right slds-border_top slds-border_left slds-border_bottom slds-p-around_small">
+    <ul class="slds-listbox slds-listbox_horizontal" role="listbox" aria-label="Selected Options:" aria-orientation="horizontal" aria-describedby="listbox-pill-default">
+            
+    <template for:each={fieldsResult} for:item="fieldItem">
+        <li class="slds-listbox-item" role="presentation" key={fieldItem.apiName}>
+            <template if:true={fieldItem.label}>  
+    <lightning-pill label={fieldItem.label} data-value={fieldItem.fieldType} data-id ={fieldItem.apiName} onremove={handleRemove} draggable="true" ondragstart={ondragHandle}></lightning-pill>
+</template>    
+</li>
+
+    </template>
+    </ul>
+    </div>
+    
+    </lightning-layout-item>
+    <lightning-layout-item size="4" class="slds-p-horizontal_small">
+        <div class="slds-drop-zone" ondragover={alloDrop} ondrop={ondropHandle}>
+            <div class="demo-only demo-component" style="width:100%;height:15rem;">
+                <h1>Drop here....</h1>
+            </div>
+            </div>
+        </lightning-layout-item>
+        <lightning-layout-item size="3" class="slds-p-horizontal_small">
+            <!-- <c-assignmentinput-box fieldList={newObj} ></c-assignmentinput-box> -->
+            <!-- <template for:each={newObj} for:item="item">
+                <span key ={item.value}>
+                <lightning-input type={item.label} placeholder={item.value}></lightning-input>
+                </span>
+            </template> -->
+            <template for:each={fieldsResult} for:item="item">
+                <template if:true={item.isRequired}>
+                    <template if:true={item.label}>
+                <span key ={item.apiName}>
+                <lightning-input type={item.fieldType} placeholder={item.label}></lightning-input>
+                </span>
+                </template>
+                </template>
+            </template>
+        </lightning-layout-item>
+    </lightning-layout>
+    </div>
+<lightning-layout> 
+    <!-- <lightning-layout-item size="4">
+    <lightning-record-form
+        object-api-name={objectApiName.label}
+        fields={fieldsResult}
+        onsuccess={handleAccountCreated}>
+    </lightning-record-form>
+    <lightning-record-form
+        record-id={recordId}
+        object-api-name={objectApiName.label}
+        layout-type="Full"
+        mode="view">
+    </lightning-record-form>
+</lightning-layout-item> -->
+    </lightning-layout>
+    </template>
+</lightning-card>
+</template>

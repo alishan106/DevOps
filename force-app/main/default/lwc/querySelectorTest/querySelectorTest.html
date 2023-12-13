@@ -1,0 +1,24 @@
+<template>
+    <lightning-card class="slds-m-around_medium">
+        <div class="slds-p-around_medium">
+        <lightning-input type="text" label="First Name" class="inp" data-id="ID"></lightning-input>
+        <lightning-input type="text" label="Last Name" class="inp"></lightning-input>
+        <lightning-input type="phone" label="Phone" name = "lName" class="inp"></lightning-input>
+        <lightning-input type="email" label="Email" class="inp"></lightning-input>
+        <lightning-button type="submit" label="Submit" class="inp" onclick={onClickHandle}></lightning-button>
+        <lightning-layout>
+            <lightning-layout size="3">
+                <lightning-input type="text" label="First Name" class="inp"></lightning-input>
+            </lightning-layout>
+            <lightning-layout size="3">
+                <lightning-input type="text" label="Last Name" class="inp slds-m-horizontal_xx-small"></lightning-input>
+            </lightning-layout>
+            <lightning-layout size="3">
+                <lightning-input type="email" label="Email" class="inp"></lightning-input>
+            </lightning-layout>
+            
+        </lightning-layout>
+    </div>
+    </lightning-card>
+
+</template>

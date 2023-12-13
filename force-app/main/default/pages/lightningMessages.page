@@ -1,0 +1,34 @@
+<apex:page renderAs="">  
+    <div>
+        <p>Received message: <b><label id="MCMessageText"/></b></p>
+        <br/>
+        <p>Enter Your Message Here :</p>
+        <input type="text" id="theMessage" />        
+        <br/><br/>
+        <button onclick="publishMC()"> Send</button>                     
+    </div>
+    
+    <script>    
+    
+    var SAMPLEMC = "{!$MessageChannel.mainMessageChannel__c}";
+    var subscriptionToMC;
+    
+    var previousOnload = window.onload;
+    window.onload = function() { if (previousOnload) { previousOnload(); } 
+                                subscriptionToMC = sforce.one.subscribe(SAMPLEMC, displayMessage); }
+    
+    function publishMC() {
+        
+        const message = {
+            recordId: document.getElementById('theMessage').value,
+            recordData: "From VisualForce Page"
+        };
+        sforce.one.publish(SAMPLEMC, message);
+    }    
+    
+    function displayMessage(message) {
+        var textLabel = document.querySelector("#MCMessageText");
+        textLabel.innerHTML = message ? message.recordId : 'no message payload';
+    }        
+    </script>    
+</apex:page>

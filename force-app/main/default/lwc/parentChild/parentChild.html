@@ -1,0 +1,18 @@
+<template>
+    <template if:true={bikeId}>
+        <div class="container">
+            <div>
+                <h1>{bike.Name}</h1>
+            </div>
+            <img class="product-img" src={bike.Image_Link__c} onerror={handleImgError}></img>
+            <div class="slds-m-around_large"><b>Price : </b>{bike.Price__c}
+                <lightning-button variant="brand" label="Add" onclick={handleClick} class="slds-m-left_large">
+                </lightning-button>
+            </div>
+            <div><b>Discription : </b>{bike.Description__c}</div>
+            <div class="slds-m-around_large">
+            <c-parent-Child bike-id={selectedbike} onsimpleevent={handleSimpleEvent}></c-parent-Child>
+        </div>
+        </div>
+    </template>
+</template>

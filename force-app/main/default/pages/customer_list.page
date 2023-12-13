@@ -1,0 +1,41 @@
+<apex:page sidebar="false" tabStyle="Hotel_Customer__c" title="Customer List" controller="AddCustomerController">
+    <apex:sectionHeader title="Customer" Subtitle="Customer List"/>
+    <apex:pageMessages />
+    <apex:form id="dummyId" >        
+        <apex:pageBlock >
+            <apex:pageBlockButtons >
+                <apex:commandButton value="New" action="{!addNew}" />
+            </apex:pageBlockButtons>            
+            <apex:pageBlockSection title="Customer List" columns="1" collapsible="false">
+                <apex:variable var="i" value="{!1}"/>
+                <apex:pageBlockTable value="{!customerList}" var="con">
+                    <apex:column headerValue="#">{!i}
+                        <apex:variable var="i" value="{!i+1}"/>
+                    </apex:column>
+                    <apex:column headerValue="Action">
+                        <apex:commandButton value="Edit" action="{!editCustomer}" reRender="dummyId">
+                            <apex:param name="" value="{!con.Id}" assignTo="{!customerId}" />
+                        </apex:commandButton>
+                        <apex:commandButton value="View" action="{!viewCustomer}" reRender="dummyId">                        
+                            <apex:param name="" value="{!con.Id}" assignTo="{!customerId}" />
+                        </apex:commandButton>
+                        <apex:commandButton value="Delete " action="{!deleteCustomer}" reRender="dummyId">
+                            <apex:param name="" value="{!con.Id}" assignTo="{!customerId}" />
+                        </apex:commandButton>
+                        <apex:commandButton value="Clone" action="{!cloneCustomer}" reRender="dummyId">
+                            <apex:param name="" value="{!con.Id}" assignTo="{!customerId}" />
+                        </apex:commandButton>
+                    </apex:column>
+                    <apex:column headerValue="Customer Name">
+                        <apex:outputlink value="https://ibirdssoftwareservicespv-4e-dev-ed--c.visualforce.com/{!con.Id}">{!con.Full_Name__c}</apex:outputlink>
+                    </apex:column>
+                    <apex:column value="{!con.Gender__c}" headerValue="Gender" />
+                    <apex:column value="{!con.City__c}" headerValue="City"/>                
+                    <apex:column value="{!con.Email__c}" headerValue="Email"/>
+                    <apex:column value="{!con.Phone__c}" headerValue="Phone Number" />
+                    <apex:column value="{!con.Is_Married__c}" headerValue="Is Married" />
+                </apex:pageBlockTable>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

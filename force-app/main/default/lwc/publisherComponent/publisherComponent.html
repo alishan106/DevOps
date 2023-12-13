@@ -1,0 +1,61 @@
+<template>
+<template if:true={pubCall}>
+	<lightning-card title="Publisher" class="slds-m-around_medium" icon-name="custom:custom6">
+		<lightning-layout class="slds-m-around_medium">
+			<lightning-layout-item size="3" class="slds-m-around_small">
+				<lightning-combobox
+                    name="product"
+                    label="Choose Products"
+                    value={unitDetail.name}
+                    onchange={nameMethod}
+                    options={productOptions} required ></lightning-combobox>
+			</lightning-layout-item>
+			<lightning-layout-item size="3" class="slds-m-around_small">
+				<lightning-combobox
+                    name="quantity"
+                    label="Choose Products"
+                    value={unitDetail.qty}
+                    onchange={qtyMethod}
+                    options={productQty} required></lightning-combobox>
+			</lightning-layout-item>
+			<lightning-layout-item size="3" class="slds-m-around_small">
+				<lightning-input type="number" name="input1" label="Enter Price" placeholder="Enter Price" onchange={priceMethod} value={unitPrice} required></lightning-input>
+			</lightning-layout-item>
+		</lightning-layout>
+		<lightning-layout >			
+			<lightning-layout-item size="9" class="slds-m-around_small">
+				<lightning-button label="ADD" onclick={sendDetailsclick} style="float:right"></lightning-button>
+			</lightning-layout-item>
+		</lightning-layout>
+	</lightning-card>
+    </template>
+    <template if:false={pubCall}>		
+		<lightning-card title="Publisher" class="slds-p-around_medium" icon-name="custom:custom9">
+			<lightning-layout class="slds-m-around_medium">
+				<table id="customers">
+					<thead>
+						<tr>
+							<th>Name</th>
+							<th>Quantity</th>
+							<th colspan="3">Price</th>
+						</tr>
+					</thead>
+					<tbody>
+						<template for:each={editedObj} for:item="prod">
+							<tr key={prod.name}>
+								<td><lightning-input type="text" value={prod.name} readonly></lightning-input></td>
+								<td><lightning-input type="Number" value={prod.qty}></lightning-input></td>
+								<td><lightning-input type="Number" value={prod.price}></lightning-input></td>
+								
+								<td><lightning-button variant="destructive" label="X"  class="slds-m-left_x-small"></lightning-button></td>
+							</tr>
+						</template>
+					</tbody>
+				</table>
+        </lightning-layout>
+	<lightning-layout class="slds-m-around_medium">
+		<lightning-button  variant="brand" label="Submit" ></lightning-button>
+		</lightning-layout>
+	</lightning-card>
+</template>
+</template>

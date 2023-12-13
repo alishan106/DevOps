@@ -1,0 +1,15 @@
+<apex:page controller="AccountOpportunitiesCountController" showHeader="false" tabStyle="Contact">
+    <apex:pageBlock >
+    	<apex:pageBlockSection columns="1" title="Account List" collapsible="false">
+        	<apex:pageBlockTable value="{!accountList}" var="acc">
+            	<apex:column value="{!acc.name}" />
+                <apex:column headerValue="Opportunity Count">
+                    <apex:variable var="i" value="{!0}" />
+                    <apex:repeat value="{!acc.Opportunities}">
+                        <apex:variable var="i" value="{!i+1}"/>
+                    </apex:repeat>{!i}
+                </apex:column>
+            </apex:pageBlockTable>
+        </apex:pageBlockSection>             
+    </apex:pageBlock>
+</apex:page>

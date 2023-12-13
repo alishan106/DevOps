@@ -1,0 +1,56 @@
+<template>
+    <form>
+        <lightning-card title="Create New Contact">
+            <lightning-layout class="slds-m-top_small">
+                <lightning-layout-item size="6" class="slds-p-around_small">
+                    <lightning-input type="text" name="fName" label="First Name" onchange={handleInputChange} value={FirstName} data-id="reset" required></lightning-input>
+                    <lightning-input type="email" name="eMail" label="Email" onchange={handleInputChange} value={Email} data-id="reset" required></lightning-input>
+                </lightning-layout-item>
+                <lightning-layout-item size="6" class="slds-p-around_small">
+                    <lightning-input type="text" name="lName" label="Last Name" onchange={handleInputChange} value={LastName} data-id="reset" required></lightning-input>
+                    <lightning-input type="tel" name="pHone" label="Phone" onchange={handleInputChange} value={Phone} data-id="reset" required></lightning-input>
+                </lightning-layout-item>
+            </lightning-layout>
+            <lightning-layout class="slds-m-left-_small slds-m-right-_small">
+                <lightning-layout-item size="6" class="slds-p-around_small">
+                    <lightning-input type="text" name="mStreet" label="Mailing Street" onchange={handleInputChange} value={MailingStreet} data-id="reset" required></lightning-input>
+                </lightning-layout-item>
+                <lightning-layout-item size="6" class="slds-p-around_small">
+                    <lightning-input type="text" name="mCity" label="Mailing City" onchange={handleInputChange} value={MailingCity} data-id="reset" required></lightning-input>
+                </lightning-layout-item>
+            </lightning-layout>
+            <lightning-layout class="slds-m-left-_small slds-m-right-_small">
+                <lightning-layout-item size="4" class="slds-p-around_small">
+                    <lightning-combobox name="mCountry"
+                    label="Mailing Country"
+                    placeholder="Select Country"
+                    options={countryOption}
+                    data-id="reset" required
+                    onchange={handleInputChange}>
+                </lightning-combobox>
+                
+                </lightning-layout-item>
+                <lightning-layout-item size="4" class="slds-p-around_small">
+                    <lightning-combobox name="mState"
+                    label="Mailing State"
+                    placeholder="Select State"
+                    data-id="reset"
+                    options={stateOptions}
+                    onchange={handleInputChange}>
+                </lightning-combobox>                
+            </lightning-layout-item>
+                <lightning-layout-item size="4" class="slds-p-around_small">
+                    <lightning-input name="mCode" type="text" label="Mailing Postal Code" onchange={handleInputChange} value={MailingPostalCode} data-id="reset" required></lightning-input>
+                </lightning-layout-item>
+            </lightning-layout>
+
+            <lightning-layout>
+                <lightning-layout-item size="12">
+                    <div class="slds-form-element buttons slds-text-align_center">
+                        <lightning-button variant="brand" label="Create Contact" onclick={handleCreateContact}></lightning-button>
+                    </div>
+                </lightning-layout-item>
+            </lightning-layout>        
+        </lightning-card>
+    </form>
+</template>

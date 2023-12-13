@@ -1,0 +1,47 @@
+<template>
+	<lightning-card>
+		<lightning-layout>
+			<lightning-layout-item size="12">
+				<lightning-input type="Number" label="Number" onchange={handleNum}
+					class="slds-m-around_x-small number ">
+				</lightning-input>
+			</lightning-layout-item>
+		</lightning-layout>
+		<table>
+			<template for:each={num} for:item="number" for:index="index">
+				<lightning-layout key={number.Id}>
+					<lightning-layout-item size="3">
+						<lightning-input label="Name" data-id={number.Id} name="Name" value={number.Name}
+							class="slds-m-around_x-small number Name opp" onchange={handlNameChange} required>
+						</lightning-input>
+					</lightning-layout-item>
+					<lightning-layout-item size="3">
+						<lightning-input label="Close Date" data-id={number.Id} type="Date" value={number.CloseDate}
+							class="slds-m-around_x-small number CloseDate opp" name="CloseDate"
+							onchange={handleCloseDateChange} required></lightning-input>
+					</lightning-layout-item>
+					<lightning-layout-item size="3">
+						<lightning-combobox name="stage" label="Stage" value={number.StageName} placeholder=" "
+							data-id={number.Id} options={options} class="slds-m-around_x-small number Stage opp"
+							onchange={handleSatgeName} required>
+						</lightning-combobox>
+					</lightning-layout-item>
+					<lightning-layout-item size="3">
+						<lightning-button-icon icon-name="utility:delete" data-id={number.Id} alternative-text="Delete"
+							class="slds-m-left_xx-small" onclick={removeRow} title="Delete"></lightning-button-icon>
+					</lightning-layout-item>
+					<lightning-button-icon icon-name="utility:add" size="large" variant="bare" data-id={number.Id}
+						alternative-text="Add" onclick={addRow}> </lightning-button-icon>
+				</lightning-layout>
+			</template>
+		</table>
+		<lightning-layout>
+			<lightning-layout-item size="12">
+				<div class="slds-align_absolute-center slds-m-around_x-small">
+					<lightning-button type="submit" variant="brand" label="Save" onclick={handleSave}>
+					</lightning-button>&nbsp;
+				</div>
+			</lightning-layout-item>
+		</lightning-layout>
+	</lightning-card>
+</template>

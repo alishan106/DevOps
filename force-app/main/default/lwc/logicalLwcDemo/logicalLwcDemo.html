@@ -1,0 +1,20 @@
+<template>
+    <lightning-card title="Logical LWC" icon-name="custom:custom6">
+        <lightning-layout vertical-align="center">
+            <lightning-layout-item padding="around-small">{greeting}</lightning-layout-item>
+        </lightning-layout>
+        <template if:true={message}>
+            <lightning-layout-item padding="around-small">{message}</lightning-layout-item>
+        </template>
+        <lightning-layout-item padding="around-large">
+            <template for:each={contacts} for:item="contact" for:index="index">
+                    <ul key={contact.id}>
+                        <li>{index}</li>
+                        <li>{contact.Id}</li>
+                        <li>{contact.Name}</li><br>
+                    </ul>
+            </template>
+        </lightning-layout-item>
+    </lightning-card>
+    
+</template>

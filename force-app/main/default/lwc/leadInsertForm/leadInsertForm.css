@@ -1,0 +1,15 @@
+span.required::before {
+    content: '*';
+    margin-right: 4px;
+    color: red;
+  }
+  .layoutAlignCenter{
+    align-items: center;
+  }
+  .saveFloat{
+    float:right;
+  }
+  .cancelFloat{
+    float:right;
+    margin-right: 10px;
+  }

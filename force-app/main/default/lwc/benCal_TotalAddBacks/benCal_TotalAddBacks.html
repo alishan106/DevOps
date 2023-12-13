@@ -1,0 +1,165 @@
+<template>
+    <lightning-card variant="Narrow" title="ADD BACKS" class="slds-m-around_medium">
+        <div class="slds-car-m-around-medium">
+            <template if:true={fieldSet}>
+            <lightning-record-edit-form object-api-name="BenCalc_Entity__c" onsuccess={handleSuccess}>
+                <lightning-messages></lightning-messages>
+            <table>
+                <tr>
+                    <td colspan="2">
+                       <lightning-input-field field-name={fieldSet.Depreciation__c} onchange={handleChange} class="input"></lightning-input-field> 
+                    </td>
+                    <td>
+                        <lightning-input type="number" formatter="currency" step="0.01" onchange={handleChange2} class="input2"></lightning-input>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                       <lightning-input-field field-name={fieldSet.Amortisation__c} onchange={handleChange} class="input"></lightning-input-field> 
+                    </td>
+                    <td>
+                        <lightning-input type="number" formatter="currency" step="0.01" onchange={handleChange2} class="input2"></lightning-input>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                       <lightning-input-field field-name={fieldSet.Donations__c} onchange={handleChange} class="input"></lightning-input-field> 
+                    </td>
+                    <td>
+                        <lightning-input type="number" formatter="currency" step="0.01" onchange={handleChange2} class="input2"></lightning-input>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                       <lightning-input-field field-name={fieldSet.Related_Party_Income_Split_Salery__c} onchange={handleChange} class="input"></lightning-input-field> 
+                    </td>
+                    <td>
+                        <lightning-input type="number" formatter="currency" step="0.01" onchange={handleChange2} class="input2"></lightning-input>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                       <lightning-input-field field-name={fieldSet.Related_Party_Income_Split_Super__c} onchange={handleChange} class="input"></lightning-input-field> 
+                    </td>
+                    <td>
+                        <lightning-input type="number" formatter="currency" step="0.01" onchange={handleChange2} class="input2"></lightning-input>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                       <lightning-input-field field-name={fieldSet.Loss_on_Sale_of_an_Asset__c} onchange={handleChange} class="input"></lightning-input-field> 
+                    </td>
+                    <td>
+                        <lightning-input type="number" formatter="currency" step="0.01" onchange={handleChange2} class="input2"></lightning-input>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                       <lightning-input-field field-name={fieldSet.Motor_Vehicle_Percentage__c} onchange={handleChange} class="input"></lightning-input-field> 
+                    </td>
+                    <td>
+                        <lightning-input type="number" formatter="percent" step="0.01"></lightning-input>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                       <lightning-input-field field-name={fieldSet.Motor_Vehicle_Adjusted__c} onchange={handleChange} class="input"></lightning-input-field> 
+                    </td>
+                    <td>
+                        <lightning-input type="number" formatter="currency" step="0.01" onchange={handleChange2} class="input2"></lightning-input>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                       <lightning-input-field field-name={fieldSet.Utilities_Telecommunications_Percentage__c}></lightning-input-field> 
+                    </td>
+                    <td>
+                        <lightning-input type="number" formatter="percent" step="0.01"></lightning-input>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                       <lightning-input-field field-name={fieldSet.Utilities_Telecom_Adjusted__c} onchange={handleChange} class="input"></lightning-input-field> 
+                    </td>
+                    <td>
+                        <lightning-input type="number" formatter="currency" step="0.01" onchange={handleChange2} class="input2"></lightning-input>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                       <lightning-input-field field-name={fieldSet.Utilities_Rent_Percentage__c}></lightning-input-field> 
+                    </td>
+                    <td>
+                        <lightning-input type="number" formatter="percent" step="0.01"></lightning-input>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                       <lightning-input-field field-name={fieldSet.Utilities_Rent_Adjusted__c} onchange={handleChange} class="input"></lightning-input-field> 
+                    </td>
+                    <td>
+                        <lightning-input type="number" formatter="currency" step="0.01" onchange={handleChange2} class="input2"></lightning-input>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                       <lightning-input-field field-name={fieldSet.Utilities_Mortgage_Percentage__c}></lightning-input-field> 
+                    </td>
+                    <td>
+                        <lightning-input type="number" formatter="percent" step="0.01"></lightning-input>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                       <lightning-input-field field-name={fieldSet.Utilities_Mortgage_Adjusted__c} onchange={handleChange} class="input"></lightning-input-field> 
+                    </td>
+                    <td>
+                        <lightning-input type="number" formatter="currency" step="0.01" onchange={handleChange2} class="input2"></lightning-input>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                       <lightning-input-field field-name={fieldSet.Utilities_Electricity_Percentage__c}></lightning-input-field> 
+                    </td>
+                    <td>
+                        <lightning-input type="number" formatter="percent" step="0.01"></lightning-input>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                       <lightning-input-field field-name={fieldSet.Utilities_Electricity_Adjusted__c} onchange={handleChange} class="input"></lightning-input-field> 
+                    </td>
+                    <td>
+                        <lightning-input type="number" formatter="currency" step="0.01" onchange={handleChange2} class="input2"></lightning-input>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                       <lightning-input-field field-name={fieldSet.Fines_and_Penalties__c} onchange={handleChange} class="input"></lightning-input-field> 
+                    </td>
+                    <td>
+                        <lightning-input type="number" formatter="currency" step="0.01" onchange={handleChange2} class="input2"></lightning-input>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                       <lightning-input-field field-name={fieldSet.Additional_Expenses_Add_Backs__c} onchange={handleChange} class="input"></lightning-input-field> 
+                    </td>
+                    <td>
+                        <lightning-input type="number" formatter="currency" step="0.01" onchange={handleChange2} class="input2"></lightning-input>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                       <lightning-input-field field-name={fieldSet.Total_Addbacks_Self_Employed__c} value={totalAddBacks}></lightning-input-field> 
+                    </td>
+                    <td>
+                        <lightning-input type="number" formatter="currency" step="0.01" value={totalAddBacks2}></lightning-input>
+                    </td>
+                </tr>
+            </table>
+            </lightning-record-edit-form> 
+            </template>               
+        </div>
+    </lightning-card>
+</template>

@@ -1,0 +1,35 @@
+<apex:page sidebar="false" tabStyle="Student__c" title="Students" Controller="SearchStudentDetailsController" >
+    <apex:sectionHeader title="Students" subtitle="Home" />
+    <apex:messages />
+    <apex:form >
+        <apex:pageBlock >
+            <apex:variable var="i" value="{!0}"/>
+            <apex:pageBlockSection title="Search Student" columns="2">     
+                <apex:pageBlockSectionItem >
+                    <apex:inputText value="{!searchFname}" html-placeholder="First or Last Name"/>
+                </apex:pageBlockSectionItem>                                
+                <apex:pageBlockSectionItem >
+                    <apex:inputField value="{!Student.Class__c}" html-placeholder="Class"/>
+                </apex:pageBlockSectionItem>               
+                <apex:pageBlockSectionItem >
+                    <apex:inputField value="{!student.DOB__c}" html-placeholder="Date of Birth" required="false" />
+                </apex:pageBlockSectionItem>
+                <apex:commandButton value="Search" action="{!doSearch}"/>
+            </apex:pageBlockSection>
+            <apex:pageBlockSection columns="1" title="Students Record">
+                <apex:pageBlockTable value="{!studentsList}" var="stu">
+                    <apex:column headerValue="#">{!i+1}
+                        <apex:variable var="i" value="{!i+1}" />
+                    </apex:column>
+                    <apex:column value="{!stu.Name}" headervalue="Name"/>  
+                    <apex:column value="{!stu.Last_Name__c}" headervalue="Last Name"/>
+                    <apex:column value="{!stu.Class__c}" headervalue="Class"/>
+                    <apex:column value="{!stu.Phone__c}" headervalue="Phone"/>
+                    <apex:column value="{!stu.DOB__c}" headervalue="Date of Birth"/>
+                    <apex:column value="{!stu.Email_ID__c}" headervalue="Email"/>  
+                    <apex:column value="{!stu.Gender__c}" headervalue="Gender"/>
+                </apex:pageBlockTable>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

@@ -1,0 +1,23 @@
+<template>
+    <lightning-card>
+        <lightning-combobox
+        options={data1}
+        label="combobox"
+        onchange={handleRemoveRecord}
+        >
+
+        </lightning-combobox>
+        <table>
+            <template for:each={data} for:item="account">
+                
+
+                    <tr key={account.id}>
+                        <th>{account.Id}</th>
+                        <th>{account.Name}</th>
+                        <th>{account.Phone}</th>
+                    </tr>
+                
+            </template>
+        </table>
+    </lightning-card>
+</template>

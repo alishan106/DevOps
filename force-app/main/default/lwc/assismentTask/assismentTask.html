@@ -1,0 +1,54 @@
+<template>
+	<lightning-card title="Account And Contact Details" class="slds-p-around_large">
+		<div class="slds-p-around_large">
+			<lightning-combobox name="progress" label="Account" options={optionSetAccount}
+				onchange={handleChangeAccount}>
+			</lightning-combobox>
+			<lightning-combobox name="progress" label="Contact" options={optionSetContact}
+				onchange={handleChangeContact}>
+			</lightning-combobox>
+            <div class="slds-p-top_medium">
+                <lightning-button label="View Task"  onclick={handleClick} class="slds-m-left_x-small"></lightning-button>
+            </div>
+
+<template if:true={tasks}>
+			<div style="slds-p-around_large slds-m-around_large">
+
+				<table class="slds-table">
+					<tr>
+						<td>
+							Subject
+						</td>
+						<td>
+							CreatedBy
+						</td>
+						<td>
+							Due Date
+						</td>
+						<td>
+							Status
+						</td>
+					</tr>
+					<template for:each={tasks} for:item="tsk">
+						<tr key={tsk.Sujbect}>
+							<td>
+								{tsk.Subject}
+							</td>
+							<td>
+								{tsk.CreayedBy}
+							</td>
+							<td>
+								{tsk.ActivityDate}
+							</td>
+							<td>
+								{tsk.Status}
+							</td>
+						</tr>
+					</template>
+				</table>
+			</div>
+</template>
+		</div>
+	</lightning-card>
+
+</template>

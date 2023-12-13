@@ -1,0 +1,19 @@
+<template>
+    <lightning-card title="Publish LWC">
+        <lightning-layout class="slds-m-around_medium">
+            <lightning-layout-item size="12">
+                <p>Message From Subscribe : <b>{pubmessage}</b></p>
+            </lightning-layout-item>
+        </lightning-layout>
+        <lightning-layout class="slds-m-around_medium">
+            <lightning-layout-item size="12">
+                <lightning-input type="text" label="Enter Your Message Here :" class="inpfrm"></lightning-input>
+            </lightning-layout-item>
+        </lightning-layout>
+        <lightning-layout class="slds-m-around_medium">
+            <lightning-layout-item size="6">
+                <lightning-button type="submit" label="Send" onclick={handleSendMessage}></lightning-button>
+            </lightning-layout-item>
+        </lightning-layout>
+    </lightning-card>
+</template>

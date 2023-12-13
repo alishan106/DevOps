@@ -1,0 +1,41 @@
+<apex:page showHeader="false" tabStyle="Contact" title="Account" standardController="Account" recordSetVar="accounts">
+    <apex:messages />
+    <apex:pageBlock >
+            <apex:pageBlockTable value="{!Accounts}" var="acc">
+                <apex:column value="{!acc.Name}" headervalue="Name"/>
+                <apex:column value="{!acc.AccountNumber}" headervalue="Account Number"/>
+                <apex:column value="{!acc.City__c}" headervalue="City"/>
+                <apex:column value="{!acc.Phone}" headervalue="Phone"/>
+            </apex:pageBlockTable>
+            
+            <apex:pageBlock title="Table Data">
+            <apex:dataTable value="{!Accounts}" var="acc" border="2" cellpadding="1">
+               <apex:column value="{!acc.Name}" headervalue="Name"/>
+                <apex:column value="{!acc.AccountNumber}" headervalue="AccountNumber"/>
+                <apex:column value="{!acc.City__c}" headervalue="City"/>
+                <apex:column value="{!acc.Phone}" headervalue="Phone"/>  
+                </apex:dataTable>
+            </apex:pageBlock>
+                
+            <apex:pageBlock title="Repeat">
+                <table border="2" width="100%" float="center">
+                    <tr>
+                        <td>Name</td>
+                        <td>Account Number</td>
+                        <td>City</td>
+                        <td>Phone</td>
+                    </tr>
+                    <apex:repeat value="{!Accounts}" var="acc">
+                        <tr>
+                            <td>{!acc.Name}</td>
+                            <td>{!acc.AccountNumber}</td>
+                            <td>{!acc.City__c}</td>
+                            <td>{!acc.Phone}</td>
+                        </tr>
+                    </apex:repeat>
+                    
+                </table>
+            </apex:pageBlock>
+        
+    </apex:pageBlock>
+</apex:page>

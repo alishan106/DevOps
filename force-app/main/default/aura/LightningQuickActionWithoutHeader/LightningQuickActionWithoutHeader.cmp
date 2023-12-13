@@ -1,0 +1,7 @@
+<aura:component implements="force:lightningQuickActionWithoutHeader,force:hasRecordId">
+
+    <aura:attribute name="recordId" type="Id" access="global" />
+	<h1>Quick Action Without Header</h1>
+    <h1>Account Id : {!v.recordId}</h1>
+
+</aura:component>

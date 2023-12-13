@@ -1,0 +1,41 @@
+<apex:page sidebar="false" tabStyle="Account" title="Students" Controller="StudentListController" >
+    <apex:sectionHeader title="Students" subtitle="Search" />
+    <apex:messages />
+    <apex:form >
+        <apex:pageBlock >
+            <apex:pageBlockSection title="Search Student" columns="2">     
+                <apex:pageBlockSectionItem >
+                    <apex:inputText value="{!searchName}" html-placeholder="First or Last Name"/>
+                </apex:pageBlockSectionItem>                                
+                <apex:pageBlockSectionItem >
+                    <apex:inputText value="{!searchEmail}" html-placeholder="Search by Email"/>
+                </apex:pageBlockSectionItem>               
+                <apex:pageBlockSectionItem >
+                    <apex:inputText value="{!searchPhone}" html-placeholder="Search by Phone" />
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+        <apex:pageBlock >
+            <apex:variable var="i" value="{!0}"/>
+            <apex:pageBlockButtons >
+                <apex:pageBlockSection >
+                    <apex:commandButton value="Search" action="{!doSearch}"/>
+                </apex:pageBlockSection>
+            </apex:pageBlockButtons>
+            <apex:pageBlockSection columns="1" title="Students Record">
+                <apex:pageBlockTable value="{!studentsList}" var="stu">
+                    <apex:column headerValue="#">{!i+1}
+                        <apex:variable var="i" value="{!i+1}" />
+                    </apex:column>
+                    <apex:column value="{!stu.Name}" headervalue="Name"/>  
+                    <apex:column value="{!stu.Last_Name__c}" headervalue="Last Name"/>
+                    <apex:column value="{!stu.Email_ID__c}" headervalue="Email"/>
+                    <apex:column value="{!stu.Phone__c}" headervalue="Phone"/>
+                    <apex:column value="{!stu.DOB__c}" headervalue="Date of Birth"/>
+                     <apex:column value="{!stu.Class__c}" headervalue="Class"/> 
+                    <apex:column value="{!stu.Gender__c}" headervalue="Gender"/>
+                </apex:pageBlockTable>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

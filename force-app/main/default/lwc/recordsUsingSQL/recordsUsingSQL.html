@@ -1,0 +1,78 @@
+<template>
+  <template if:true={mode.list}>
+      <lightning-card title="Accounts Records" icon-name="custom:custom14">
+          <table border="1" cellspacing="0" cellpadding="5">
+              <tr>
+                  <th colspan="4">Action</th>
+                  <th>First Name</th>
+                  <th>Email</th>
+                  <th>Phone</th>
+              </tr>
+              <template for:each={getAccount.data} for:item="accItem">
+                  <tr key={accItem.Id}>
+                      <td>
+                          <lightning-button label="Delete" size="small" variant="brand" onclick={handleAccountDelete} value={accItem}></lightning-button>
+                      </td>
+                      <td>
+                          <lightning-button label="Edit" size="small" variant="brand" onclick={handleAccountEdit} value={accItem}></lightning-button>
+                      </td>
+                      <td>
+                          <lightning-button label="View" size="small" variant="brand" onclick={handleAccountView} value={accItem}></lightning-button>
+                      </td>
+                      <td>
+                          <lightning-button label="Clone" size="small" variant="brand" onclick={handleAccountClone} value={accItem}></lightning-button>
+                      </td>
+                      <td>{accItem.Name}</td>
+                      <td>{accItem.Email_Gmail__c}</td>
+                      <td>{accItem.Phone}</td>
+                  </tr>
+              </template>
+          </table>
+      </lightning-card>
+  </template>
+
+
+  <template if:true={mode.edit}>
+      <lightning-card title="Edit Account Details" icon-name="custom:custom14">
+          <div class="slds-form-element__control slds-grid">
+              <div class="slds-p-around_medium lgc-bg slds-col slds-order_2 slds-large-order_1">
+                  <lightning-input type="text" label="Enter First Name" value={editData.Name} class="inputData"></lightning-input>
+              </div>
+          </div>
+          <div class="slds-form-element__control slds-grid">
+              <div class="slds-p-around_medium lgc-bg slds-col slds-order_2 slds-large-order_1">
+                  <lightning-input type="email" label="Enter Email Address" value={editData.Email_Gmail__c} class="inputData"></lightning-input>
+              </div>
+              <div class="slds-p-around_medium lgc-bg slds-col slds-order_1 slds-large-order_2">
+                  <lightning-input type="phone" label="Enter Phone Number" value={editData.Phone} class="inputData"></lightning-input>
+              </div>
+          </div>
+          <div class="slds-p-around_medium lgc-bg ">
+              <lightning-button label="Save" size="small" variant="neutral" onclick={handleSave} value={editData}></lightning-button>&nbsp;
+              <lightning-button label="Cancel" size="small" variant="brand" onclick={handleCancel}></lightning-button>
+          </div>
+      </lightning-card>
+  </template>
+
+  <template if:true={mode.view}>
+      <lightning-card title="View Account Details" icon-name="custom:custom14">
+          <div class="slds-form-element__control slds-grid">
+              <div class="slds-p-around_medium lgc-bg slds-col slds-order_2 slds-large-order_1">
+                  <lightning-input type="text" label="Enter First Name" value={viewData.Name} readonly></lightning-input>
+              </div>
+          </div>
+          <div class="slds-form-element__control slds-grid">
+              <div class="slds-p-around_medium lgc-bg lgc-bg slds-col slds-order_2 slds-large-order_1">
+                  <lightning-input type="email" label="Enter Email Address" value={viewData.Email_Gmail__c} readonly></lightning-input>
+              </div>
+              <div class="slds-p-around_medium lgc-bg slds-col slds-order_1 slds-large-order_2">
+                  <lightning-input type="phone" label="Enter Phone Number" value={viewData.Phone} readonly></lightning-input>
+              </div>
+          </div>
+          <div class="slds-p-around_medium lgc-bg ">
+              <lightning-button label="Edit" size="small" variant="neutral" onclick={handleAccountEdit} value={viewData}></lightning-button>&nbsp;
+              <lightning-button label="Cancel" size="small" variant="brand" onclick={handleCancel}></lightning-button>
+          </div>
+      </lightning-card>
+  </template>
+</template>

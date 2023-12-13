@@ -1,0 +1,45 @@
+<apex:page sidebar="false" controller="CountryStateCityController">
+    <apex:form id="frm">
+        <apex:actionFunction name="showState" action="{!showState}" reRender="frm" status="loadState" />
+        <apex:actionFunction name="showCity" action="{!showCity}" reRender="frm" status="loadCity" />
+        <apex:actionFunction name="showPin" action="{!showPin}" reRender="frm" />
+        <apex:pageBlock >
+            <apex:pageBlockSection columns="2">
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Select Country</apex:outputLabel>
+                    <apex:selectList value="{!countryValue}" size="1" onchange="showState();">
+                        <apex:selectOption itemLabel="-- None --" itemValue=""></apex:selectOption>
+                        <apex:selectOptions value="{!country}"></apex:selectOptions>
+                    </apex:selectList>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:actionStatus id="loadState" startText="Loading..."></apex:actionStatus>
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+            <apex:pageBlockSection columns="2">
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Select State</apex:outputLabel>
+                    <apex:selectList value="{!stateValue}" size="1" onchange="showCity();">
+                        <apex:selectOption itemLabel="-- None --" itemValue=""></apex:selectOption>
+                        <apex:selectOptions value="{!state}"></apex:selectOptions>
+                    </apex:selectList>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:actionStatus id="loadCity" startText="Loading..."></apex:actionStatus>
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+            <apex:pageBlockSection columns="2">
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Select City</apex:outputLabel>
+                    <apex:selectList value="{!cityValue}" size="1" onchange="showPin();">
+                        <apex:selectOption itemLabel="-- None --" itemValue=""></apex:selectOption>
+                        <apex:selectOptions value="{!city}"></apex:selectOptions>
+                    </apex:selectList>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="{!pinCode}"></apex:outputLabel>
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

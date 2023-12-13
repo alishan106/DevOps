@@ -1,0 +1,52 @@
+<apex:page showHeader="false" title="Booking Detail" standardController="Booking__c" tabStyle="Booking__c" renderAs="PDF">
+    <div style="margin-top : 10px; width : 100%; height : 22em">
+        <div style="float : left ">
+            <Table width="350">
+                <tr><td><apex:image value="{!$Resource.iBirds_logo}" width="200" height="200"/></td></tr><br/>
+                <tr><th>Invoice for :</th><td>{!booking__c.Customer__r.Full_Name__c}</td></tr>
+                <tr><th></th><td>{!booking__c.Customer__r.Address__c}</td></tr>
+                <tr><th></th><td>{!booking__c.Customer__r.Email__c}</td></tr>
+                <tr><th></th><td>{!booking__c.Customer__r.Phone__c}</td></tr>
+            </Table>
+        </div>
+        <div  style="float : right; margin-right : 5em">
+            <Table>
+                <tr><th><hr/> </th><td><hr/></td></tr>
+                <tr><th>Address :</th><td>M​-​15, Ana Sagar Link Road</td></tr>
+                <tr><th></th><td>Near City Hospital</td></tr>
+                <tr><th></th><td>Ajmer, Rajasthan (India)<br/><br/></td></tr>
+                <tr><th>Bank :</th><td>HDFC</td></tr>
+                <tr><th>IBAN :</th><td>56739882</td></tr>
+                <tr><th>BIC :</th><td>A8811UI<br/><br/></td></tr>
+                <tr><th>Phone :</th><td>993983776691</td></tr>
+                <tr><th>E-mail :</th><td>ibirds@Services.com</td></tr>
+                <tr><th>Website :</th><td>WWW.ibirdsSevices.co.in</td></tr>
+                <tr><th><hr/> </th><td><hr/></td></tr>
+            </Table>
+        </div>
+    </div>
+    <div >
+        <b style="font-size : 20px; margin-left : 10em" >INVOICE</b> 
+        <hr/><br/>
+        <table style="width : 100%; border: 1px solid Black; border-collapse: collapse;">
+            <thead>
+                <tr><th style="border: 1px solid Black; color : #1798c1;">DISCRIPTION</th>
+                    <th style="border: 1px solid Black; color : #1798c1;">TOTAL HOURS</th>
+                    <th style="border: 1px solid Black; color : #1798c1;">PER DAY PRICE</th>
+                    <th style="border: 1px solid Black; color : #1798c1;">FINAL AMMOUNT</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="border: 1px solid Black;"> Room stay from 
+                        {!booking__c.Check_In_Time__c} to {!booking__c.Check_Out_Time__c}
+                    </td>
+                    <td style="border: 1px solid Black;">{!booking__c.Total_Hours__c}</td>
+                    <td style="border: 1px solid Black;">{!booking__c.Room_No__r.Price__c}
+                    </td>
+                    <td style="border: 1px solid Black;">{!booking__c.Amount__c}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</apex:page>

@@ -1,0 +1,11 @@
+<apex:page sidebar="false" showHeader="false">
+    <apex:form >
+        <apex:pageBlock title="Master Section">
+            <apex:pageBlockSection title="Container Section">
+                <h6>
+                    Hello World !
+                </h6>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

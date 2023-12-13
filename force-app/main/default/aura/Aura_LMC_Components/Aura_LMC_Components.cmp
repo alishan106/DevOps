@@ -1,0 +1,16 @@
+<aura:component implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId" access="global">
+    <ltng:require styles="{!$Resource.SLDS24 + '/assets/styles/lightning-design-system-ltng.css'}" />
+    <aura:attribute name="inpVal" type="String"/>
+    <aura:attribute name="recordValue" type="String" />
+    <lightning:messageChannel aura:id="mainMessageChannel" type="mainMessageChannel__c" />
+    <lightning:card title="Aura LMC Component">         
+           
+        <div class="slds-m-around_medium">
+            <lightning:input name="input1" label="Enter Your Message Here :" value="{!v.inpVal}"/>
+        </div>
+        
+        <div class="slds-m-around_medium">
+            <lightning:button label="Send" title="Send" onclick="{!c.handleClick }"/>
+        </div>
+    </lightning:card>
+</aura:component>

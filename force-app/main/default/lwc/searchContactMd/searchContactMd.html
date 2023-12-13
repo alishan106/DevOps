@@ -1,0 +1,65 @@
+<template>
+    <lightning-card title ="Contacts" >
+        <div class ="slds-m-around_medim">
+            <lightning-layout class ="slds-m-around_medim" title ="Search">
+                <lightning-layout-item class="slds-m-bottom_large" size ="2">
+                   <lightning-input type ="text"  value ={searchInput} placeholder = "Seacrch Name or Email" onchange ={handleInput}  ></lightning-input>                      
+                 </lightning-layout-item>
+                
+                <lightning-layout-item class="slds-m-left_medium slds-m-top_x-small">
+                      <lightning-button label ="Search" variant ="destructive" onclick={handleSearch} ></lightning-button>
+                </lightning-layout-item> 
+               
+                <lightning-layout-item  size = "9">   
+                    
+                        <lightning-combobox  
+                            style="float: right;" 
+                            size = "1"                         
+                            options = {recordSize}
+                            value= {selectedPageSize}
+                            onchange = {changePageSize}   ></lightning-combobox>
+                                                                
+                </lightning-layout-item>         
+            </lightning-layout>
+        </div>
+      
+        <div>
+        <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_striped ">
+            <thead>
+                    <tr>
+                        <th> Name </th>
+                        <th> Email </th>
+                        <th> Account Name </th>
+                        <th> Phone </th>
+                        <th> Type </th>
+                    </tr>
+            </thead>
+        
+            <tbody>
+                <template  for:each ={contactList} for:item ="data"  >
+                    <tr key={data.Id}>
+                        <td> {data.Name} </td>
+                        <td> {data.Email} </td>
+                        <td if:true={data.Account}>{conItem.Account.Name}</td>
+                        <td if:false={data.Account}></td>
+                        <td> {data.Phone} </td> 
+                        <td> {data.Type__c} </td>                     
+                    </tr>
+                </template> 
+            </tbody>
+        </table>
+    </div>
+    
+    <lightning-layout class="slds-m-around_medium">
+        <lightning-layout-item size="12" class="slds-m-around_x-small" >
+           <lightning-button-group style="float: right;">
+              <lightning-button label="First" onclick={handleFirstButton} ></lightning-button>
+              <lightning-button label="Previous" onclick={handlePreviousButton} ></lightning-button>
+              <lightning-button label="Next" onclick={handleNextButton} ></lightning-button> 
+              <lightning-button label="Last" onclick={handleLastButton} ></lightning-button>
+           </lightning-button-group>
+        </lightning-layout-item>
+     </lightning-layout>
+    </lightning-card>
+    
+</template>

@@ -1,0 +1,9 @@
+<template>
+    <lightning-card title="Child">
+        <h2>This is Child !!</h2>
+        <p>{parentMessage}</p>
+        <template if:true={childButton}>
+			<lightning-button label="Send Message" onclick={sendMessagetoParent}></lightning-button>
+		</template>
+    </lightning-card>
+</template>

@@ -1,0 +1,7 @@
+<apex:page showHeader="false" sidebar="false">
+ <script>
+     var PingSpURL = "https://my.pingserver.com:9031/idp/startSSO.ping?PartnerSpId=salesforce.com.sp";
+     var siteLoginPage = "&TargetResource={!$Site.CurrentSiteUrl}siteLogin?startUrl={!$Site.OriginalUrl}";
+     window.location = PingSpURL+siteLoginPage;
+ </script>
+</apex:page>

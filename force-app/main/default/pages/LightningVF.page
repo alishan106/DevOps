@@ -1,0 +1,16 @@
+<apex:page >
+    <apex:includeLightning />
+
+    <div id="lightning" />
+
+    <script>
+        $Lightning.use("c:LightningVFApp", function() {
+          $Lightning.createComponent("LightningMap",
+              {  },
+              "lightning",
+              function(component) {
+                console.log("Lightning Component is Implimented");
+              });
+        });
+    </script>
+</apex:page>

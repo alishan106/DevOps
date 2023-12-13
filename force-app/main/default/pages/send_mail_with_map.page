@@ -1,0 +1,54 @@
+<apex:page showHeader="false" controller="SendMailWithMapController"  tabStyle="Account">
+    <apex:pageMessages ></apex:pageMessages>
+    <apex:form id="frm">
+        <apex:pageBlock >
+            <apex:pageBlockSection columns="1" title="Send Email" collapsible="false">
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >To </apex:outputLabel>
+                    <apex:outputText value="{!toList}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Subject </apex:outputLabel>
+                    <apex:inputText value="{!subjectInput}" />
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Body </apex:outputLabel>
+                    <apex:inputTextarea cols="75" rows="15" value="{!bodyInput}" style="resize:none" />
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+            <apex:pageBlockSection >
+                <apex:pageBlockSectionItem >
+                    <apex:inputCheckbox value="{!isWithAttachment}"  /> 
+                    <apex:outputLabel > With Attachment</apex:outputLabel> 
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:commandButton value="Send" action="{!sendMail}" rendered="{!toList != ''}" />          
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:actionStatus id="msgShow" startText="Loading Please Wait..."></apex:actionStatus>
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+            <apex:actionFunction name="onChangeFun" action="{!checkboxHandling}" reRender="frm" />
+            <apex:actionFunction name="headerChkbox" action="{!chkboxHeader}" reRender="frm" status="msgShow"/>
+            
+            <apex:pageBlockSection columns="1" title="account List With Attachment Count" collapsible="false" >
+                <apex:pageBlockTable value="{!accountWrapperList}" var="accountWrapper" >
+                    <apex:column headerValue="Action">
+                        <apex:facet name="header">
+                            <apex:inputCheckbox onChange="headerChkbox();" value="{!headerCheck}" id="headerCheckbox" />
+                        </apex:facet>
+                        <apex:inputCheckbox value="{!accountWrapper.isChecked}" id="checkboxId" onchange="onChangeFun();" />
+                    </apex:column>
+                    <apex:column value="{!accountWrapper.account.Name	}" />
+                    <apex:column value="{!accountWrapper.account.phone}" />
+                    <apex:column value="{!accountWrapper.account.Email_Gmail__c}" />
+                    <apex:column headerValue="Attachment">
+                    <apex:dataList value="{!accountWrapper.account.Attachments}" var="attachment">
+               <apex:outputText value="{!attachment.Name}"/>
+            </apex:dataList>
+                    </apex:column>
+                </apex:pageBlockTable>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

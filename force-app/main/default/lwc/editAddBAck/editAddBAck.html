@@ -1,0 +1,497 @@
+<!--
+@description       : Add Backs for Benefit Calculator 
+@author            : Isharat Jaha
+@group             : Add Backs
+@last modified on : 20/10/2022
+@last modified by : Isharat Jaha
+-->
+<template>
+  <lightning-card>
+    <lightning-accordion allow-multiple-sections-open class=”slds-m-around_medium”>
+      <lightning-accordion-section name="Add Backs" label="Add Backs">
+        <template if:true={entityList}>
+          <table
+            class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_col-bordered slds-border_left slds-border_right"
+            style="width: 100%">
+            <tr>
+              <th colspan="2" scope="col">
+                <b><lightning-formatted-text value="Data Range"></lightning-formatted-text></b>
+              </th>
+              <template for:each={entityList} for:item="ent">
+                <th key={ent.id}>
+                  <b>{ent.Assessment_Period__r.Date_From__c} - {ent.Assessment_Period__r.Date_To__c}</b>
+                </th>
+              </template>
+            </tr>
+            <tr>
+              <th colspan="2">
+                <b>
+                  <lightning-formatted-text value="Depreciation"></lightning-formatted-text>
+                </b>
+              </th>
+              <template for:each={entityList} for:item="ent">
+                <th key={ent.id}>
+                  <template if:true={ent.Depreciation__c}>
+                    ${ent.Depreciation__c}
+                  </template>
+                </th>
+              </template>
+            </tr>
+            <tr>
+              <th colspan="2">
+                <b><lightning-formatted-text value="Amortisation"></lightning-formatted-text></b>
+              </th>
+              <template for:each={entityList} for:item="ent">
+                <th key={ent.id}>
+                  <template if:true={ent.Amortisation__c}>
+                    ${ent.Amortisation__c}
+                  </template>
+                </th>
+              </template>
+            </tr>
+            <tr>
+              <th colspan="2">
+                <b><lightning-formatted-text value="Donations"></lightning-formatted-text></b>
+              </th>
+              <template for:each={entityList} for:item="ent">
+                <th key={ent.id}>
+                  <template if:true={ent.Donations__c}>
+                    ${ent.Donations__c}
+                  </template>
+                </th>
+              </template>
+            </tr>
+            <tr>
+              <th colspan="2">
+                <b><lightning-formatted-text value="Related Party Income Split Salary"></lightning-formatted-text></b>
+              </th>
+              <template for:each={entityList} for:item="ent">
+                <th key={ent.id}>
+                  <template if:true={ent.Related_Party_Income_Split_Salary__c}>
+                    ${ent.Related_Party_Income_Split_Salary__c}
+                  </template>
+                </th>
+              </template>
+            </tr>
+            <tr>
+              <th colspan="2">
+                <b><lightning-formatted-text value="Related Party Income Split Super"></lightning-formatted-text></b>
+              </th>
+              <template for:each={entityList} for:item="ent">
+                <th key={ent.id}>
+                  <template if:true={ent.Related_Party_Income_Split_Super__c}>
+                    ${ent.Related_Party_Income_Split_Super__c}
+                  </template>
+                </th>
+              </template>
+            </tr>
+            <tr>
+              <th colspan="2">
+                <b><lightning-formatted-text value="Loss on Sale of an Asset"></lightning-formatted-text></b>
+              </th>
+              <template for:each={entityList} for:item="ent">
+                <th key={ent.id}>
+                  <template if:true={ent.Loss_on_Sale_of_an_Asset__c}>
+                    ${ent.Loss_on_Sale_of_an_Asset__c}
+                  </template>
+                </th>
+              </template>
+            </tr>
+            <tr>
+              <th>
+              </th>
+              <th>
+                <b><lightning-formatted-text value={percentageLabel} linkify></lightning-formatted-text></b>
+              </th>
+              <template for:each={entityList} for:item="ent">
+                <th key={ent.id}>
+                </th>
+              </template>
+            </tr>
+            <tr>
+              <th>
+                <b><lightning-formatted-text value={motorLabel} linkify></lightning-formatted-text></b>
+              </th>
+              <th>
+                <template if:true={entityListPercentge.Motor_Vehicle_Percentage__c}>
+                  {entityListPercentge.Motor_Vehicle_Percentage__c}%
+                </template>
+              </th>
+              <template for:each={entityList} for:item="ent">
+                <th key={ent.id}>
+                  <template if:true={ent.Motor_Vehicle_Adjusted__c}>
+                    ${ent.Motor_Vehicle_Adjusted__c}
+                  </template>
+                </th>
+              </template>
+            </tr>
+            <tr>
+              <th>
+                <b><lightning-formatted-text value={utilitiesTeleLabel} linkify></lightning-formatted-text></b>
+              </th>
+              <th>
+                <template if:true={entityListPercentge.Utilities_Telecommunications_Percentage__c}>
+                  {entityListPercentge.Utilities_Telecommunications_Percentage__c}%
+                </template>
+              </th>
+              <template for:each={entityList} for:item="ent">
+                <th key={ent.id}>
+                  <template if:true={ent.Utilities_Telecom_Adjusted__c}>
+                    ${ent.Utilities_Telecom_Adjusted__c}
+                  </template>
+                </th>
+              </template>
+            </tr>
+            <tr>
+              <th>
+                <b><lightning-formatted-text value={utilitiesRentLabel} linkify></lightning-formatted-text></b>
+              </th>
+              <th>
+                <template if:true={entityListPercentge.Utilities_Rent_Percentage__c}>
+                  {entityListPercentge.Utilities_Rent_Percentage__c}%
+                </template>
+              </th>
+              <template for:each={entityList} for:item="ent">
+                <th key={ent.id}>
+                  <template if:true={ent.Utilities_Rent_Adjusted__c}>
+                    ${ent.Utilities_Rent_Adjusted__c}
+                  </template>
+                </th>
+              </template>
+            </tr>
+            <tr>
+              <th>
+                <b><lightning-formatted-text value={utilitiesMortgageLabel} linkify></lightning-formatted-text></b>
+              </th>
+              <th>
+                <template if:true={entityListPercentge.Utilities_Mortgage_Percentage__c}>
+                  {entityListPercentge.Utilities_Mortgage_Percentage__c}%
+                </template>
+              </th>
+              <template for:each={entityList} for:item="ent">
+                <th key={ent.id}>
+                  <template if:true={ent.Utilities_Mortgage_Adjusted__c}>
+                    ${ent.Utilities_Mortgage_Adjusted__c}
+                  </template>
+                </th>
+              </template>
+            </tr>
+            <tr>
+              <th>
+                <b><lightning-formatted-text value={utilitiesElectricityLabel} linkify></lightning-formatted-text></b>
+              </th>
+              <th>
+                <template if:true={entityListPercentge.Utilities_Electricity_Percentage__c}>
+                  {entityListPercentge.Utilities_Electricity_Percentage__c}%
+                </template>
+              </th>
+              <template for:each={entityList} for:item="ent">
+                <th key={ent.id}>
+                  <template if:true={ent.Utilities_Electricity_Adjusted__c}>
+                    ${ent.Utilities_Electricity_Adjusted__c}
+                  </template>
+                </th>
+              </template>
+            </tr>
+            <tr>
+              <th>
+                <b><lightning-formatted-text value="Actions"></lightning-formatted-text></b>
+              </th>
+              <th>
+                <lightning-button variant="base" label="Edit" onclick={openModalPercent} value={entityListPercentge}>
+                </lightning-button>
+                <!-- <lightning-button variant="base" label="Edit" onclick={openModalPercent} value={ent}></lightning-button> -->
+              </th>
+              <template for:each={entityList} for:item="ent">
+                <th key={ent.id}>
+                </th>
+              </template>
+            </tr>
+            <tr>
+              <th colspan="2">
+                <b><lightning-formatted-text value="Fines and Penalties"></lightning-formatted-text></b>
+              </th>
+              <template for:each={entityList} for:item="ent">
+                <th key={ent.id}>
+                  <template if:true={ent.Fines_and_Penalties__c}>
+                    ${ent.Fines_and_Penalties__c}
+                  </template>
+                </th>
+              </template>
+            </tr>
+            <tr>
+              <th colspan="2">
+                <b><lightning-formatted-text value="Additional Expenses/Add Backs"></lightning-formatted-text></b>
+              </th>
+              <template for:each={entityList} for:item="ent">
+                <th key={ent.id}>
+                  <template if:true={ent.Additional_Expenses_Add_Backs__c}>
+                    ${ent.Additional_Expenses_Add_Backs__c}
+                  </template>
+                </th>
+              </template>
+            </tr>
+            <tr>
+              <th colspan="2">
+                <b><lightning-formatted-text value="Total Add Backs"></lightning-formatted-text></b>
+              </th>
+              <template for:each={entityList} for:item="ent">
+                <th key={ent.id}>
+                  <template if:true={ent.Total_Addbacks_Self_Employed__c}>
+                    ${ent.Total_Addbacks_Self_Employed__c}
+                  </template>
+                </th>
+              </template>
+            </tr>
+            <tr>
+              <th colspan="2">
+                <b><lightning-formatted-text value="Actions"></lightning-formatted-text></b>
+              </th>
+              <template for:each={entityList} for:item="ent">
+                <th key={ent.id}>
+                  <lightning-button variant="base" label="Edit" onclick={openEntityModal} value={ent}></lightning-button>
+                </th>
+              </template>
+            </tr>
+          </table>
+        </template>
+
+
+
+
+
+
+
+
+
+        <template if:true={isModalOpen}>
+          <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+            aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+              <header class="slds-modal__header">
+                <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close"
+                  onclick={closeModal}>
+                  <lightning-icon icon-name="utility:close" alternative-text="close" variant="inverse" size="small"></lightning-icon>
+                  <span class="slds-assistive-text">Close</span>
+                </button>
+                <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Edit Add Backs</h2>
+              </header>
+              <div if:true={isEditForm} class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                  <template if:true={fieldSet}>
+                    <div class="slds-grid slds-wrap slds-p-around--small">
+                      <div class="slds-col slds-size_6-of-12 slds-p-horizontal_xxx-small">
+                        <lightning-input type="number" formatter="currency-fixed" min="1" label="Depreciation"
+                          onchange={handleChangeValues} name="deper" value={modalEntity.Depreciation__c} step="0"
+                          class="validateEntity"></lightning-input>
+                      </div>
+
+                      <div class="slds-col slds-size_6-of-12 slds-p-horizontal_xxx-small" style="text-align:center">
+                        <lightning-formatted-text value="Adjusted Add Back Amount"></lightning-formatted-text>
+                      </div>
+
+                      <div class="slds-col slds-size_6-of-12 slds-p-horizontal_xxx-small">
+                        <lightning-input type="number" formatter="currency-fixed" min="1" label="Amortisation"
+                          onchange={handleChangeValues} name="amor" value={modalEntity.Amortisation__c} step="0"
+                          class="validateEntity"></lightning-input>
+                      </div>
+                      <div class="slds-col slds-size_6-of-12 slds-p-horizontal_xxx-small">
+                        <div class="slds-grid slds-wrap">
+                          <div class="slds-col slds-size_3-of-12 slds-p-horizontal_xxx-small">
+                            <label class="slds-form-element__label slds-no-flex" for="motorId">Motor Vihicle</label>
+                          </div>                          
+                          <div class="slds-col slds-size_8-of-12">
+                            <lightning-input type="number" formatter="currency-fixed" min="1" 
+                              onchange={handleChangeValues} name="motor" value={modalEntity.Motor_Vehicle_Adjusted__c}
+                              step="0" class="validateEntity">
+                            </lightning-input>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="slds-col slds-size_6-of-12 slds-p-horizontal_xxx-small">
+                        <lightning-input type="number" formatter="currency-fixed" min="1" label="Donations"
+                          onchange={handleChangeValues} name="donat" value={modalEntity.Donations__c} step="0"
+                          class="validateEntity"></lightning-input>
+                      </div>
+                      <div class="slds-col slds-size_6-of-12 slds-p-horizontal_xxx-small">
+                        <div class="slds-grid slds-wrap">
+                          <div class="slds-col slds-size_3-of-12 slds-p-horizontal_xxx-small">
+                            <label class="slds-form-element__label slds-no-flex"
+                              for="telecomId">Utilities-Telecoms</label>
+                          </div>
+                          <div class="slds-col slds-size_8-of-12">
+                            <lightning-input type="number" formatter="currency-fixed" min="1"
+                              label="Utilities Telecom Adjusted" onchange={handleChangeValues} name="telecom"
+                              value={modalEntity.Utilities_Telecom_Adjusted__c} step="0" class="validateEntity">
+                            </lightning-input>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="slds-col slds-size_6-of-12 slds-p-horizontal_xxx-small">
+                        <lightning-input type="number" formatter="currency-fixed" min="1"
+                          label="Related Party Income Split Salary" onchange={handleChangeValues} name="related"
+                          value={modalEntity.Related_Party_Income_Split_Salary__c} step="0" class="validateEntity">
+                        </lightning-input>
+                      </div>
+                      <div class="slds-col slds-size_6-of-12 slds-p-horizontal_xxx-small">
+                        <div class="slds-grid slds-wrap">
+                          <div class="slds-col slds-size_3-of-12 slds-p-horizontal_xxx-srelatedmall"><label
+                              class="slds-form-element__label slds-no-flex" for="rentId">Utilities-Rent</label></div>                          
+                            <div class="slds-col slds-size_8-of-12">
+                            <lightning-input type="number" formatter="currency-fixed" min="1"
+                              label="Utilities Rent Adjusted__c" onchange={handleChangeValues} name="rent"
+                              value={modalEntity.Utilities_Rent_Adjusted__c} step="0" class="validateEntity">
+                            </lightning-input>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="slds-col slds-size_6-of-12 slds-p-horizontal_xxx-small">
+                        <lightning-input type="number" formatter="currency-fixed" min="1"
+                          label="Related Party Income Split_Super" onchange={handleChangeValues} name="party"
+                          value={modalEntity.Related_Party_Income_Split_Super__c} step="0" class="validateEntity">
+                        </lightning-input>
+                      </div>
+                      <div class="slds-col slds-size_6-of-12 slds-p-horizontal_xxx-small">
+                        <div class="slds-grid slds-wrap">
+                          <div class="slds-col slds-size_3-of-12 slds-p-horizontal_xxx-small">
+                            <label class="slds-form-element__label slds-no-flex"
+                              for="mortageId">Utilities-Mortgage</label>
+                          </div>
+                          <div class="slds-col slds-size_8-of-12">
+                            <lightning-input type="number" formatter="currency-fixed" min="1"
+                              label="Utilities Mortgage Adjusted" onchange={handleChangeValues} name="mortgege"
+                              value={modalEntity.Utilities_Mortgage_Adjusted__c} step="0" class="validateEntity">
+                            </lightning-input>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="slds-col slds-size_6-of-12 slds-p-horizontal_xxx-small">
+                        <lightning-input type="number" formatter="currency-fixed" min="1"
+                          label="Loss on Sale of an Asset" onchange={handleChangeValues} name="loss"
+                          value={modalEntity.Loss_on_Sale_of_an_Asset__c} step="0" class="validateEntity">
+                        </lightning-input>
+                      </div>
+                      <div class="slds-col slds-size_6-of-12 slds-p-horizontal_xxx-small">
+                        <div class="slds-grid slds-wrap">
+                          <div class="slds-col slds-size_3-of-12 slds-p-horizontal_xxx-small">
+                            <label class="slds-form-element__label slds-no-flex"
+                              for="electrityId">Utilities-Electricity</label>
+                          </div>
+                          <div class="slds-col slds-size_1-of-12">
+                          </div>
+                          <div class="slds-col slds-size_8-of-12">
+                            <lightning-input type="number" formatter="currency-fixed" min="1"
+                              label="Utilities Electricity Adjusted" onchange={handleChangeValues} name="elect"
+                              value={modalEntity.Utilities_Electricity_Adjusted__c} step="0" class="validateEntity">
+                            </lightning-input>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="slds-col slds-size_6-of-12 slds-p-horizontal_xxx-small">
+                        <lightning-input type="number" formatter="currency-fixed" min="1" label="Fines and Penalties"
+                          onchange={handleChangeValues} name="fine" value={modalEntity.Fines_and_Penalties__c} step="0"
+                          class="validateEntity"></lightning-input>
+                      </div>
+                      <div class="slds-col slds-size_6-of-12 slds-p-horizontal_xxx-small">
+                        <lightning-input type="number" formatter="currency-fixed" min="1"
+                          label="Additional Expenses Add Backs" onchange={handleChangeValues} name="add"
+                          value={modalEntity.Additional_Expenses_Add_Backs__c} step="0" class="validateEntity">
+                        </lightning-input>
+                      </div>
+                    </div>
+                  </template>
+              </div>
+              <Footer class="slds-modal__footer">
+                <div class="slds-grid slds-grid_vertical-align-center slds-grid_alight-spread">
+                  <div class="slds-size_5-of-12"></div>
+                  <div class="slds-size_4-of-12">
+                    <template if:true={showErrorMessage}>
+                      <b class="slds-text-color_error">Please enter values greater than or equal to zero</b>
+                    </template>
+                  </div>
+                  <div class="slds-size_3-of-12">
+                    <lightning-button class="slds-m-top_small" label="Save" variant="Brand" onclick={handleEntitySubmit}></lightning-button>
+                    &nbsp;
+                    <lightning-button class="slds-m-top_small slds-hide" label="Cancel" onclick={closeModal}></lightning-button>
+                  </div>
+                </div>
+              </Footer>
+              <!--Arth Modal Correction Start-->
+            </div>
+          </section>
+        </template>
+
+
+        <template if:true={isModalOpenPecentage}>
+          <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+            aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+              <header class="slds-modal__header">
+                <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close"
+                  onclick={closeModal}>
+                  <lightning-icon icon-name="utility:close" alternative-text="close" variant="inverse" size="small">
+                  </lightning-icon>
+                  <span class="slds-assistive-text">Close</span>
+                </button>
+                <h2 id="modal-heading-02" class="slds-text-heading_medium slds-hyphenate">Edit Percentage</h2>
+              </header>
+              <div if:true={isEditForm} class="slds-modal__content slds-p-around_medium" id="modal-content-id-2">
+                <lightning-record-edit-form object-api-name="BenCalc_Entity__c" columns="2"
+                  record-id={madalPercentageId}>
+                  <lightning-messages>
+                  </lightning-messages>
+                  <template if:true={fieldSet}>
+                    <div class="slds-grid slds-wrap slds-p-around--small">
+                      <div class="slds-col slds-size_6-of-12 slds-p-horizontal_xxx-small">
+                        <lightning-input id="motorPerId" type="number" formatter="percent-fixed" max="100" min="0"
+                          required="true" label={motorLabel} onchange={handlePercentValue} name="motor"
+                          value={entityListPercentge.Motor_Vehicle_Percentage__c} step="0" class="validate">
+                        </lightning-input>
+                      </div>
+                      <div class="slds-col slds-size_6-of-12 slds-p-horizontal_xxx-small">
+                        <lightning-input id="electrityPerId" type="number" formatter="percent-fixed" max="100" min="0"
+                          label={utilitiesElectricityLabel} onchange={handlePercentValue} step="0" required="true"
+                          name="electricity" value={entityListPercentge.Utilities_Electricity_Percentage__c}
+                          class="validate">
+                        </lightning-input>
+                      </div>
+                      <div class="slds-col slds-size_6-of-12 slds-p-horizontal_xxx-small">
+                        <lightning-input id="rentPerId" required="true" label={utilitiesRentLabel} type="number"
+                          formatter="percent-fixed" max="100" onchange={handlePercentValue} name="rent" step="0" min="0"
+                          value={entityListPercentge.Utilities_Rent_Percentage__c} class="validate">
+                        </lightning-input>
+                      </div>
+                      <div class="slds-col slds-size_6-of-12 slds-p-horizontal_xxx-small">
+                        <lightning-input id="telecomPerId" required="true" label={utilitiesTeleLabel} type="number"
+                          formatter="percent-fixed" max="100" onchange={handlePercentValue} name="telecom" step="0"
+                          min="0" value={entityListPercentge.Utilities_Telecommunications_Percentage__c}
+                          class="validate">
+                        </lightning-input>
+                      </div>
+                      <div class="slds-col slds-size_6-of-12 slds-p-horizontal_xxx-small">
+                        <lightning-input id="mortgegePerId" required="true" label={utilitiesMortgageLabel} type="number"
+                          formatter="percent-fixed" max="100" onchange={handlePercentValue} min="0" name="mortgege"
+                          step="0" value={entityListPercentge.Utilities_Mortgage_Percentage__c} class="validate">
+                        </lightning-input>
+                      </div>
+                    </div>
+                  </template>
+                  <div class="slds-align_absolute-center">
+                    <lightning-button class="slds-m-top_small" label="Save" variant="Brand"
+                      onclick={handlePercentSubmit}>
+                    </lightning-button>
+                    &nbsp;
+                    <lightning-button class="slds-m-top_small" label="Cancel" onclick={closeModal}>
+                    </lightning-button>
+                  </div>
+                </lightning-record-edit-form>
+              </div>
+            </div>
+          </section>
+        </template>
+        <template if:false={entityList}>
+          <p>No Entity Found</p>
+        </template>
+      </lightning-accordion-section>
+    </lightning-accordion>
+  </lightning-card>
+</template>

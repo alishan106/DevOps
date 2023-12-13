@@ -1,0 +1,25 @@
+<template>
+    <lightning-card title="Picklist Example" icon-name="custom:custom1">
+        <div class="slds-m-around_medium">
+            <lightning-combobox label="Select Country" 
+                name="Country"
+                options={countryOptions} 
+                value={country}
+                onchange={countryChange}
+                >
+            </lightning-combobox>
+            <lightning-combobox label="Select State"
+                name="State" 
+                options={stateOptions} 
+                value={selectedState}
+                >
+            </lightning-combobox>
+
+            <lightning-combobox label="Select City"
+                name="City" 
+                options={cities} 
+                >
+            </lightning-combobox>
+        </div>
+    </lightning-card>
+</template>

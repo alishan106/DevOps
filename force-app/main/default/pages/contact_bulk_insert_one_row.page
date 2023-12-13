@@ -1,0 +1,23 @@
+<apex:page showHeader="false" tabStyle="Student__c" title="Bulk Records Insertion" Controller="OneRowBulkInsert" >
+    <apex:messages />
+    <apex:form >
+        <apex:pageBlock title="Insert Contact Records" Id="block">
+            <apex:pageBlockButtons >
+                <apex:commandButton value="Add" action="{!addRowInsert}" reRender="block"/>
+                <apex:commandButton value="Save" action="{!saveAll}"/>
+                <apex:commandButton value="Cancel" action="{!cancel}" />
+            </apex:pageBlockButtons>
+            <apex:pageBlockTable value="{!addcontactList}" var="addcon">
+                <apex:column headerValue="First Name">
+                    <apex:inputField value="{!addcon.FirstName}" />
+                </apex:column>
+                <apex:column headerValue="Last Name">
+                    <apex:inputField value="{!addcon.LastName}" required="false"/>
+                </apex:column>
+                <apex:column headerValue="Account">
+                    <apex:inputField value="{!addcon.AccountId}" />
+                </apex:column>
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

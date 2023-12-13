@@ -1,0 +1,19 @@
+<aura:component
+  implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome"
+>
+  <aura:attribute name="recordValue" type="String" />
+
+  <lightning:messageChannel
+    type="mainMessageChannel__c"
+    onMessage="{!c.handleMessage}"
+    scope="APPLICATION"
+  />
+
+  <lightning:card title="Aura Component">
+    <p class="slds-p-horizontal_small"><br />
+
+      <lightning:formattedText value="Received message : "  /> <lightning:formattedText value="{!v.recordValue}"  />
+
+    </p>
+  </lightning:card>
+</aura:component>

@@ -1,0 +1,107 @@
+<apex:page sidebar="false" contentType="application/msword" cache="true">
+    <html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word'>
+        <head>
+            <style>
+                p.MsoHeader, li.MsoHeader, div.MsoHeader{
+                    margin:0in;
+                    margin-top:.0001pt;
+                    mso-pagination:widow-orphan;
+                    tab-stops:center 3.0in right 6.0in;
+                }
+                p.MsoFooter, li.MsoFooter, div.MsoFooter{
+                    margin:0in;
+                    margin-bottom:.0001pt;
+                    mso-pagination:widow-orphan;
+                    tab-stops:center 3.0in right 6.0in;
+                }
+                @page Section1{
+                    size:8.5in 11.0in; 
+                    margin:0.5in 0.5in 0.5in 0.5in;
+                    mso-header-margin:0.5in;
+                    mso-header:h1;
+                    mso-footer:f1; 
+                    mso-footer-margin:0.5in;
+                    mso-paper-source:0;
+                }
+                div.Section1{
+                    page:Section1;
+                }
+                /*Below is the style to prevent the repetition of header and Footer.. Cheers!!!*/
+                table#hrdftrtbl{
+                    margin:0in 0in 0in 9in;
+                }        
+            </style>
+        </head>
+
+        <body>
+            <!-- Content -->
+            <div class="Section1"><!--Section1 div starts-->
+                <!-- Page 1 starts -->
+                <br/>
+                Page 1 Content
+
+                <br clear="all" style="page-break-before:always" />
+
+
+                <!-- Page 2 Starts -->
+                <br/>
+                Page 2 Content
+
+                <br clear="all" style="page-break-before:always" />
+
+                <!-- Page 3 Starts -->
+                <br/>
+                Page 3 Content
+
+                <!--Header and Footer Starts-->
+                <table id='hrdftrtbl' border='1' cellspacing='0' cellpadding='0'>
+                    <tr>
+                        <td>
+                            <!--Header-->
+                            <div style='mso-element:header' id="h1" >
+                                <p class="MsoHeader">
+                                    <table style="width:100%;">
+                                    <tr>
+                                        <td style="font-size:20pt;"><strong>SUBMITTAL</strong></td>
+                                        <td rowspan="4" align="right"><img src="https://static.wixstatic.com/media/790a51_ee663c918130477283242bfe9bcdcba1~mv2.png/v1/fill/w_251,h_91,al_c,lg_1,q_85,enc_auto/e-healthJobs%20logo%20transp%20250x91.png" width="310" height="130"/></td>
+                                    </tr> 
+                                    <tr>
+                                        <td></td>                 
+                                    </tr>
+                                    <tr>
+                                        <td style="font-size:18pt;"><strong>QWERTYUIO</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="font-size:15pt;"><strong>ASDFGHJ</strong></td>
+                                    </tr>
+                                </table>
+                                </p>
+                            </div>
+                        </td>
+
+                        <td>
+                            <!--Footer-->
+                            <div style='mso-element:footer' id="f1">
+                                <p class="MsoFooter">
+                                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                    <tr>
+                                        <td width="30%">
+                                            www.e-healthjobs.com<br/><br/><br/>
+                                        </td>
+                                        <td align="center" width="40%">
+                                            704-321-8406<br/><br/><br/>
+                                        </td>
+                                        <td align="right" width="30%">
+                                            austin@e-healthjobs.com<br/><br/>
+                                        </td>
+                                    </tr>
+                                </table>
+                                </p>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div><!--Section1 div ends-->
+        </body>
+    </html>
+</apex:page>

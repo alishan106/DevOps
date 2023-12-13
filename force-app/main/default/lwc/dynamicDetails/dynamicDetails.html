@@ -1,0 +1,24 @@
+<template>
+    <lightning-card title="Object Details" icon-name="custom:custom6">
+        <div class="slds-m-padding_medium">
+            <table>
+                <thead>
+                    <tr><td>Id</td><td>Name</td></tr>
+                </thead>
+                <tbody>
+            <template for:each = {objectListData} for:item="dataList">
+                <tr key ={dataList}>
+                    <td>
+                    {dataList.fields.Id.value};
+                    </td>
+                    <td>
+                    {dataList.fields.Name.value};
+                    </td>
+                </tr>
+            </template>
+            </tbody>
+            </table>
+        </div>      
+    </lightning-card>
+    
+</template>

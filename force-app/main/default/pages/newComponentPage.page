@@ -1,0 +1,4 @@
+<apex:page >
+    <c:newComponentTest /><br/>
+    <c:newComponentTest2 />
+</apex:page>

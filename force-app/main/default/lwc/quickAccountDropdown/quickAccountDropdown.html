@@ -1,0 +1,21 @@
+<template>
+    <div class="slds-m-around_xx-large">
+	<template if:true={dropdown}>
+		<div class="slds-m-around_xx-large">
+			<lightning-combobox name="Quick Action" label="Quick Action Account" value={value}
+				placeholder="Select Option" options={options} onchange={handleChange}>
+			</lightning-combobox>
+		</div>
+	</template>
+	<template if:true={editAccount}>
+		<div class="slds-m-around_xx-large">
+			<c-edit-quick-Account acc-record-id = {recordId} acc-object-api-name={objectApiName} oncallfromchildedit={callFromChild}></c-edit-quick-Account>
+		</div>
+	</template>
+	<template if:true={crateAccount}>
+		<div class="slds-m-around_xx-large">
+			<c-create-quick-Account oncallfromchildcreate={callFromChild}></c-create-quick-Account>
+		</div>
+	</template>
+    </div>
+</template>

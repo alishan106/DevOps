@@ -1,0 +1,26 @@
+<template>
+    <lightning-card title="Table">
+        <table  class="slds-table">
+            <tr>
+                <td>
+                    Date Range
+                </td>
+                <template for:each={tbl} for:item="tb">
+                <td key={tb.DateRange}>
+                    {tb.DateRange}
+                </td>
+                </template>
+            </tr>
+            <tr>
+                <td>
+                    Income
+                </td>
+                <template for:each={tbl} for:item="tb">
+                <td key={tb.DateRange}>
+                    {tb.Income}
+                </td>
+                </template>
+            </tr>
+        </table>
+    </lightning-card>
+</template>

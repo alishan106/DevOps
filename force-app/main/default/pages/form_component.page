@@ -1,0 +1,75 @@
+<apex:page showHeader="false" controller="FormComponentController">
+    <apex:form id="frm">
+        <apex:actionFunction name="showGender" action="{!onShowgender}" reRender="frm" />
+        <apex:actionFunction name="nameActionFunction" action="{!onShowName}" reRender="frm" />
+        <apex:pageBlock >
+            <apex:pageBlockButtons >
+                <apex:commandButton value="Show Friend" action="{!onShowFriends}" reRender="frm"/>
+            </apex:pageBlockButtons>
+            <apex:pageBlockSection >
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >City</apex:outputLabel>
+                    <apex:selectList size="1" value="{!city}">
+                        <apex:selectOption itemLabel="- None -" itemValue=""></apex:selectOption>
+                        <apex:selectOption itemLabel="Ajmer" itemValue="ajmer"></apex:selectOption>
+                        <apex:selectOption itemLabel="Jaipur" itemValue="jaipur"></apex:selectOption>
+                        <apex:selectOption itemLabel="Kota" itemValue="kota"></apex:selectOption>
+                    </apex:selectList>                    
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Selected City</apex:outputLabel>
+                    <apex:outputText >{!city}</apex:outputText>
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+            <apex:pageBlockSection >
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Select Name</apex:outputLabel>
+                    <apex:selectList size="1" value="{!name}" onchange="showName(this.value);">                        
+                        <apex:selectOptions value="{!nameOptionList}"></apex:selectOptions>
+                    </apex:selectList>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Selected Name</apex:outputLabel>
+                    <apex:outputText >{!name}</apex:outputText>
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+            <apex:pageBlockSection >
+             
+            </apex:pageBlockSection>
+            <apex:pageBlockSection >
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Select Multiple Friends</apex:outputLabel>
+                    <apex:selectCheckboxes value="{!friends}" onchange="showFriends();">
+                        <apex:selectOptions value="{!nameOptionList}"></apex:selectOptions>
+                    </apex:selectCheckboxes>
+                </apex:pageBlockSectionItem>                
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Selected Friends</apex:outputLabel>
+                    <apex:outputText value="{!friends}"></apex:outputText>
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+            <apex:pageBlockSection >
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Select Gender</apex:outputLabel>
+                    <apex:selectRadio value="{!gender}" onchange="showGender();">
+                        <apex:selectOption itemLabel="Male" itemValue="male" ></apex:selectOption>
+                        <apex:selectOption itemLabel="Female" itemValue="female" ></apex:selectOption>
+                        <apex:selectOption itemLabel="Other" itemValue="other" ></apex:selectOption>
+                    </apex:selectRadio>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Selected Gender</apex:outputLabel>
+                    <apex:outputText >{!gender}</apex:outputText>
+                </apex:pageBlockSectionItem>
+                
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>    
+    <script>
+    //	way 2 to call action function
+    function showName(selectedName){
+        alert('Hello '+selectedName);
+        nameActionFunction();
+    }
+    </script>
+</apex:page>

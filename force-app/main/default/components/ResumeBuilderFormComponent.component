@@ -1,0 +1,58 @@
+<apex:component >
+    <apex:form id="frm">
+        <script type="text/javascript">
+        function handleFirstName(){
+            console.log(event.target.value);
+            document.getElementById('{!$Component.section.sectionItem.id1}').innerHTML = event.target.value;
+        }
+    </script>
+        <!-- <apex:actionFunction name="handleFirstName" action="{!handleFirstName}" reRender="frm"/> -->
+        <apex:pageBlockSection columns="1" id="section">
+            <apex:pageBlockSectionItem id="sectionItem"> 
+                <apex:panelGrid columns="2" border="0" styleClass="tableStyle">
+                    <apex:outputLabel style="font-weight:600">First Name</apex:outputLabel> 
+                    <apex:outputLabel style="font-weight:600" id="id1">Surname</apex:outputLabel>                
+                    <apex:input type="text" title="First Name" id="firstName" onchange="handleFirstName();" html-placeholder="e.g. John" />
+                    <apex:inputText title="Surname" id="surname" html-placeholder="e.g. Doe"/>      
+                </apex:panelGrid>
+            </apex:pageBlockSectionItem>
+        </apex:pageBlockSection>
+        <apex:pageBlockSection columns="1">
+            <apex:pageBlockSectionItem >
+                <apex:panelGrid columns="2" border="0" styleClass="tableStyle">
+                    <apex:outputLabel style="font-weight:600">Phone</apex:outputLabel> 
+                    <apex:outputLabel style="font-weight:600">Email</apex:outputLabel>                
+                    <apex:inputText title="Phone" id="phone" html-placeholder="e.g. 111-222-3333" />
+                    <apex:inputText title="Email" id="email" html-placeholder="e.g. john.doe@gmail.com"/>       
+                </apex:panelGrid>
+            </apex:pageBlockSectionItem>
+        </apex:pageBlockSection>
+        <apex:pageBlockSection columns="1">
+            <apex:pageBlockSectionItem >
+                <apex:panelGrid columns="" border="0" styleClass="tableStyle">
+                    <apex:outputLabel style="font-weight:600">Profession</apex:outputLabel>            
+                  	<apex:inputText title="Profession" id="profession" html-placeholder="e.g. Software Developer"/>   
+                </apex:panelGrid>
+            </apex:pageBlockSectionItem>
+        </apex:pageBlockSection>
+        <apex:pageBlockSection columns="1">
+            <apex:pageBlockSectionItem >
+                <apex:panelGrid columns="2" border="0" styleClass="tableStyle">
+                    <apex:outputLabel style="font-weight:600">City</apex:outputLabel>
+                    <apex:outputLabel style="font-weight:600">Country</apex:outputLabel>              
+                    <apex:inputText title="City" id="city" html-placeholder="e.g. California" />
+                    <apex:inputText title="Country" id="country" html-placeholder="e.g. US" />      
+                </apex:panelGrid>
+            </apex:pageBlockSectionItem>
+        </apex:pageBlockSection>
+        <apex:pageBlockSection columns="1">
+            <apex:pageBlockSectionItem >
+                <apex:panelGrid columns="1" border="0" styleClass="tableStyle">
+                    <apex:outputLabel style="font-weight:600">Pin Code</apex:outputLabel>
+                    <apex:inputText title="Pin Code" id="pinCode" html-placeholder="e.g. 94203"/>       
+                </apex:panelGrid>
+            </apex:pageBlockSectionItem>
+        </apex:pageBlockSection>
+    </apex:form>   
+    
+</apex:component>

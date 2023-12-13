@@ -1,0 +1,17 @@
+<template>
+    <lightning-card title="Publish">
+        <lightning-layout>
+            <lightning-layout-item size="12">
+                <p>Your Message : {message}</p>
+            </lightning-layout-item>
+        </lightning-layout>
+        <lightning-layout>
+            <lightning-layout-item size="6">
+                <lightning-input type="text" label="Type Your Message" class="inpfrm"></lightning-input>
+            </lightning-layout-item>
+            <lightning-layout-item size="6">
+                <lightning-button type="submit" label="Send" onclick={handleSendMessage}></lightning-button>
+            </lightning-layout-item>
+        </lightning-layout>
+    </lightning-card>
+</template>

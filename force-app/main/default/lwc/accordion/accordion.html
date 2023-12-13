@@ -1,0 +1,28 @@
+<template>
+    <lightning-card title="Accordion">
+    <lightning-accordion>
+        <lightning-accordion-section level="Accordion">
+            <lightning-menu-item value="Menu Item">
+            </lightning-menu-item>
+            <p>Details Of accordion</p>
+        </lightning-accordion-section>
+    </lightning-accordion>
+    </lightning-card>
+    <lightning-card title="Avatar">
+    <lightning-avatar size="x-small"  src="https://www.lightningdesignsystem.com/assets/images/avatar2.jpg"></lightning-avatar>
+    <lightning-avatar size="small" variant="circle" src="https://www.lightningdesignsystem.com/assets/images/avatar2.jpg"></lightning-avatar>
+    <lightning-avatar size="medium"  src="https://www.lightningdesignsystem.com/assets/images/avatar3.jpg"></lightning-avatar>
+    <lightning-avatar size="large" fallback-icon-name="custom:custom92" src="https://www.lightningdesignsystem.com/assets/images/avatar4.jpg"></lightning-avatar>
+</lightning-card >
+<lightning-card title="Button">
+<lightning-button variant="brand" label="Download" icon-name="utility:download"></lightning-button>&nbsp;
+<lightning-button variant="inverse" label="Download" icon-name="utility:download"></lightning-button>&nbsp;
+<lightning-button variant="inverse" icon-position="right" label="Delete" icon-name="utility:delete"></lightning-button>&nbsp;
+<lightning-button variant="destructive" label="Delete" icon-name="utility:delete"></lightning-button>&nbsp;
+<lightning-button-group>
+    <lightning-button label="Refresh"></lightning-button>
+    <lightning-button label="Edit" ></lightning-button>
+    <lightning-button label="Save" disabled></lightning-button>
+</lightning-button-group>
+</lightning-card>
+</template>

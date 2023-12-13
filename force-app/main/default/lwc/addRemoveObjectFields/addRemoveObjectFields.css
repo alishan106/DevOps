@@ -1,0 +1,5 @@
+.fixedElement {
+    position:fixed;
+    top:auto;
+    z-index:9999;
+}

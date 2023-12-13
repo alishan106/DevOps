@@ -1,0 +1,46 @@
+<apex:page showHeader="false" standardController="Account" extensions="AaccountContactInlineController">
+    <apex:form id="theForm">
+        <apex:pageBlock >
+            <apex:pageBlockButtons >
+                	<apex:commandButton value="Merge" action="{!mergeAccount}" rendered="{!if(contactList.size>0,true,false)}" />
+                </apex:pageBlockButtons>
+            <apex:pageBlockSection collapsible="false">
+                <apex:pageBlockSectionItem >
+                    <apex:variable var="srNo" value="{!0}"/>
+                    <apex:pageBlockTable value="{!wrapperConList}" var="con">
+                        <apex:column headerValue="#">
+                            <apex:variable var="srNo" value="{!srNo+1}" />{!srNo}
+                        </apex:column>
+                        <apex:column headerValue="Action">
+                            <apex:inputCheckbox value="{!con.flag}">
+                                <apex:actionSupport event="onclick" action="{!selectedRecords}" reRender="theForm">
+                                <apex:param name="param" value="{!srNo-1}" assignTo="{!index}"/>
+                                </apex:actionSupport>
+                            </apex:inputCheckbox>
+                        </apex:column>
+                        <apex:column headerValue="Name" value="{!con.conObj.Name}"/>
+                        <apex:column headerValue="Phone" value="{!con.conObj.Phone}"/>
+                    </apex:pageBlockTable>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:variable var="listSrNo" value="{!0}"/>
+                    <apex:pageBlockTable value="{!contactList}" var="conList">
+                        
+                        <apex:column headerValue="#">
+                            <apex:variable var="listSrNo" value="{!listSrNo+1}" />{!listSrNo}
+                        </apex:column>
+                        <apex:column headerValue="Action">
+                            <apex:inputCheckbox value="{!conList.flag}">
+                                <apex:actionSupport event="onclick" action="{!putBackWrap}" reRender="theForm" >
+                                <apex:param name="param2" value="{!listSrNo-1}" assignTo="{!index}"/>
+                                </apex:actionSupport>
+                            </apex:inputCheckbox>
+                        </apex:column>
+                        <apex:column headerValue="Name" value="{!conList.conObj.Name}"/>
+                        <apex:column headerValue="Phone" value="{!conList.conObj.Phone}"/>
+                    </apex:pageBlockTable>
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

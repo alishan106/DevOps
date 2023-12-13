@@ -1,0 +1,36 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes" access="global" >
+
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:attribute name="mapMarkers" type="Object"/>
+    <aura:attribute name="zoomLevel" type="Integer" />
+    <aura:attribute name="mapMarkersMulti" type="Object"/>
+    <aura:attribute name="markersTitle" type="String" />
+    <aura:attribute name="selectedMarkerValue" type="String" default="France1" />
+	<div class="slds-grid slds-gutters">
+  <div class="slds-col">
+    <lightning:map 
+        mapMarkers="{! v.mapMarkers }" 
+        zoomLevel="{!v.zoomLevel}" />
+  </div>
+  <div class="slds-col">
+      This Is Lightning Map Example<br/>
+      iBirds Software Services Pvt. Ltd<br/>
+      Single Marker Map     
+  </div>
+</div>
+    <br/><br/>
+    <div class="slds-grid slds-gutters">
+  <div class="slds-col">
+    <lightning:map 
+        mapMarkers="{! v.mapMarkersMulti }"
+        markersTitle="{!v.markersTitle}"
+        selectedMarkerValue="{!v.selectedMarkerValue}"
+        onmarkerselect="{!c.handleMarkerSelect}" />
+  </div>
+  <div class="slds-col">
+      This Is Lightning Map Example<br/><br/>
+      Multiple Marker Map     
+  </div>
+</div>
+    
+</aura:component>

@@ -1,0 +1,8 @@
+<apex:page controller="downloadCSVController">
+ <apex:form >
+  <apex:outputlabel > 
+     Download CSV
+  </apex:outputlabel>
+    <apex:commandbutton value="click" rerender="one" action="{!DownloadCSV}"/>   
+  </apex:form>
+</apex:page>

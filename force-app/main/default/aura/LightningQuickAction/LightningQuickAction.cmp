@@ -1,0 +1,10 @@
+<aura:component implements="force:lightningQuickAction">
+	
+        
+    <lightning:input type="text" name="myFname" aura:id="fname" label="First Name"/>
+    <lightning:input type="text" name="myLname" aura:id="lname" label="Last NAme"/>
+
+    <br/>
+    <lightning:button label="Full Name" onclick="{!c.clickAdd}"/>
+
+</aura:component>

@@ -1,0 +1,33 @@
+<apex:page sidebar="false" controller="CheckUncheckAllCntrl" tabStyle="Account">
+    <apex:form id="theForm">
+        <apex:pageBlock >
+            <apex:pageBlockButtons >
+                <apex:commandButton value="Get Selected Record" action="{!selectedRecords}" reRender="theForm"/>
+            </apex:pageBlockButtons>
+            <apex:pageBlockSection title="List of Accounts" columns="1" collapsible="false">
+                <apex:pageBlockTable value="{!wrapperAccList}" var="acc">
+                    <apex:column >
+                        <apex:facet name="header">
+                            <apex:inputCheckbox id="mainBox" value="{!mainBoxValue}" onChange="CallAction();return false;">
+                                <apex:actionSupport event="onclick" action="{!checkUncheckAll}" reRender="theForm"/>
+                            </apex:inputCheckbox>
+                        </apex:facet>
+                        <apex:inputCheckbox value="{!acc.flag}">
+                            <apex:actionSupport event="onclick" action="{!checkUncheckMainValue}" reRender="theForm"/>
+                        </apex:inputCheckbox>
+                    </apex:column>
+                    <apex:column value="{!acc.accObj.Name}"/>
+                    <apex:column value="{!acc.accObj.Email_Gmail__c}"/>
+                    <apex:column value="{!acc.accObj.Phone}"/>
+                </apex:pageBlockTable>
+                </apex:pageBlockSection>
+            	<apex:pageBlockSection title="Selected List" columns="1" collapsible="false">
+                <apex:pageBlockTable value="{!accountList}" var="accList">
+                	<apex:column value="{!accList.Name}"/>
+                    <apex:column value="{!accList.Email_Gmail__c}"/>
+                    <apex:column value="{!accList.Phone}"/>
+                </apex:pageBlockTable>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

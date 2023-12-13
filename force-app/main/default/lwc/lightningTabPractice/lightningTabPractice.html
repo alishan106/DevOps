@@ -1,0 +1,53 @@
+<template>
+	<lightning-card title="Lightning Tab Navigation With Buttons (lwcFactory.com)">
+
+		HELLO ADMIN
+		<div class="slds-m-around_medium">
+			<table border="1">
+				<tr>
+					<th>Id</th>
+					<th>Name</th>
+					<th>Type</th>
+					<th>Rating</th>
+					<th>Phone</th>
+					<th>Website</th>
+				</tr>
+				<template for:each={contactsRec} for:item="acc">
+					<tr key={acc}>
+					</tr>
+				</template>
+			</table>
+		</div>
+
+		<!-- <lightning-tabset>
+      <template for:each={test} for:item="layer">
+        <lightning-tab label="Item One" key={layer}>
+           {layer}
+        </lightning-tab>
+      </template>
+     </lightning-tabset>
+
+    <lightning-tabset active-tab-value={activeTab}>
+    <lightning-tab label="Item One">
+        Account Record
+    </lightning-tab>
+            <lightning-tab label="Contact"  value="2" onactive={handleActive}>
+                Contact Dummy Data...
+            </lightning-tab>
+           
+            <lightning-tab label="Case"  value="3" onactive={handleActive}>
+                Case Dummy Data...
+            </lightning-tab>
+           
+            <lightning-tab label="Opportunity"  value="4" onactive={handleActive}>
+                Opportunity Dummy Data...
+            </lightning-tab>
+    </lightning-tabset> -->
+
+		<!--Navigation Button on card footer-->
+		<!-- <div slot="footer">      
+        <lightning-button variant="brand" label="Back" disabled={bDisableBackBtn} onclick={goBack}></lightning-button>
+        <lightning-button variant="brand" label="Next" disabled={bDisableNextBtn} onclick={goNext} class="slds-m-left_x-small"></lightning-button>
+    </div> -->
+	</lightning-card>
+</template>

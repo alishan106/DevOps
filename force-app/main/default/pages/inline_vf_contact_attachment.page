@@ -1,0 +1,9 @@
+<apex:page showHeader="false" tabStyle="Contact" standardController="Contact" extensions="InlineVfContactAttachment" >
+    <apex:pageBlock >
+   	<apex:pageBlockSection title="Attachments" collapsible="false" columns="4"> 
+        <apex:repeat value="{!attachmentList}" var="attList">
+        <apex:image url="https://ibirdssoftwareservicespv-4e-dev-ed.my.salesforce.com/servlet/servlet.FileDownload?file={!attList}" height="100px" width="100px" />
+        </apex:repeat>
+        </apex:pageBlockSection>
+    </apex:pageBlock>
+</apex:page>

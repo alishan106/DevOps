@@ -1,0 +1,13 @@
+<template>
+    <lightning-card title="My Account Record" icon-name="standard:account">
+        <template if:true={account.data}>
+            <div class="slds-m-around_medium">
+                <p>{name}</p>
+                <p>{phone}</p>
+            </div>
+        </template>
+        <template if:true={account.error}>
+            <!--<c-error-panel errors={account.error}></c-error-panel> -->
+        </template>
+    </lightning-card>
+</template>

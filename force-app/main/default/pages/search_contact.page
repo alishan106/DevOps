@@ -1,0 +1,40 @@
+<apex:page sidebar="false" tabStyle="Contact" controller="SearchContactController" lightningStylesheets="true">
+    <apex:sectionHeader title="Contacts" subtitle="Search" />
+    <apex:form id="reload">
+        <apex:pageBlock >            
+            <apex:pageBlockSection columns="3">     
+                <apex:pageBlockSectionItem >
+                    <apex:inputText value="{!searchValue}" html-placeholder="Search Text Here"/>
+                    <apex:commandButton value="Search" action="{!doSearch}" reRender="reload" status="statusLoading"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >          
+                    <apex:actionStatus id="statusLoading" startText="Loading.."></apex:actionStatus>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:selectList value="{!recordSize}" multiselect="false" size="1" style="float:right;" disabled="{!if(contactList.size>0,false,true)}">
+                        <apex:selectOptions value="{!selectList}"/>
+                        <apex:actionSupport event="onchange" action="{!totalNoOfPages}" reRender="reload" status="statusLoading"/>
+                    </apex:selectList>
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+            <apex:pageBlockSection title="" collapsible="false" columns="1">
+                <apex:pageBlockTable value="{!contactList}" var="contact">
+                    <apex:column value="{!contact.Name}" headervalue="Name"/>  
+                    <apex:column value="{!contact.Email}" headervalue="Email"/>
+                    <apex:column value="{!contact.AccountId}" headervalue="Account Name"/>
+                    <apex:column value="{!contact.Phone}" headervalue="Phone"/>
+                    <apex:column value="{!contact.Type__c}" headervalue="Type"/>
+                </apex:pageBlockTable>
+            </apex:pageBlockSection>                        
+            <div style="float:right; margin-top:15px;">
+                <apex:panelGrid columns="5" style="float:right;">
+                    <apex:actionStatus id="bottomStatusLoading" startText="Loading.."></apex:actionStatus>
+                    <apex:commandButton value="First" reRender="reload" action="{!first}" disabled="{!previousDisable}" status="bottomStatusLoading"/>
+                    <apex:commandButton value="Previous" reRender="reload" action="{!previous}" disabled="{!previousDisable}" status="bottomStatusLoading"/>                                            
+                    <apex:commandButton value="Next" reRender="reload" action="{!next}" disabled="{!nextDisable}" status="bottomStatusLoading"/>
+                    <apex:commandButton value="Last" reRender="reload" action="{!last}" disabled="{!nextDisable}" status="bottomStatusLoading"/> 
+                </apex:panelGrid>
+            </div>            
+        </apex:pageBlock>
+    </apex:form>    
+</apex:page>

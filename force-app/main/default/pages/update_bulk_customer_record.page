@@ -1,0 +1,24 @@
+<apex:page sidebar="false" tabStyle="Student__c" title="Updation Bulk Records" Controller="UpdateContactBulkController" >
+    <apex:sectionHeader title="Customer" Subtitle="Update Customers"/>
+    <apex:messages />
+    <apex:form >
+        <apex:pageBlock >
+            <!--<apex:variable var="rowNumber" value="{!0}"/>-->
+            <apex:pageBlockButtons >
+                <apex:commandButton value="Save" action="{!save}"/>
+                <apex:commandButton value="Cancel" action="{!cancel}" />
+            </apex:pageBlockButtons>            
+            <apex:pageBlockTable value="{!contactList}" var="con">
+                <apex:column headerValue="First Name">
+                    <apex:inputField value="{!con.FirstName}" />
+                </apex:column>
+                <apex:column headerValue="Last Name">
+                    <apex:inputField value="{!con.LastName}" />
+                </apex:column>
+                <apex:column headerValue="Account">
+                    <apex:inputField value="{!con.AccountId}" />
+                </apex:column>
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

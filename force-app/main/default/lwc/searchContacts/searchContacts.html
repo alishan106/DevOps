@@ -1,0 +1,62 @@
+<template>
+    <lightning-card title="Contacts">
+       <h2 class="slds-m-left_medium">Search</h2>
+       <lightning-layout class="slds-p-horizontal_x-small">
+          <lightning-layout-item size="3">
+             <lightning-input type="text" name="input1" placeholder="Search Text Here" value={searchInput} onchange={handleSearchInputChange}></lightning-input>
+          </lightning-layout-item>
+          <lightning-layout-item size="3" class="slds-p-around_medium">
+             <lightning-button label="Search" onclick={handleSearch}></lightning-button>
+          </lightning-layout-item>
+          <div if:true={isLoaded} class="slds-is-relative">
+             <lightning-spinner
+                alternative-text="Loading..." variant="brand">
+             </lightning-spinner>
+          </div>
+          <lightning-layout-item size="6" >
+             <lightning-combobox
+                name="selectList"
+                value={recordSize} 
+                onchange={handlePageSizeChange} 
+                options={selectPageSize} style="float: right;" > </lightning-combobox>
+          </lightning-layout-item>
+       </lightning-layout>
+       <lightning-layout class="slds-p-horizontal_x-small">
+          <lightning-layout-item size="12">
+             <table border="1" cellspacing="0" cellpadding="5">
+                <tr>
+                   <th>Name</th>
+                   <th>Email</th>
+                   <th>Account Name</th>
+                   <th>Phone</th>
+                   <th>Type</th>
+                </tr>
+                <template for:each={contactList} for:item="conItem" for:index="id">
+                   <tr key={conItem}>
+                      <td>{conItem.Name}</td>
+                      <td>
+                         <lightning-formatted-email value={conItem.Email} ></lightning-formatted-email>
+                      </td>
+                      <td if:true={conItem.Account}>{conItem.Account.Name}</td>
+                      <td if:false={conItem.Account}></td>
+                      <td>
+                         <lightning-formatted-phone value={conItem.Phone} ></lightning-formatted-phone>
+                      </td>
+                      <td>{conItem.Type__c}</td>
+                   </tr>
+                </template>
+             </table>
+          </lightning-layout-item>
+       </lightning-layout>
+       <lightning-layout class="slds-m-around_medium">
+          <lightning-layout-item size="12" class="slds-m-around_x-small" >
+             <lightning-button-group style="float: right;">
+                <lightning-button label="First" onclick={handleFirstClick} disabled={disableFirstPrevious}></lightning-button>
+                <lightning-button label="Previous" onclick={handlePreviousClick} disabled={disableFirstPrevious}></lightning-button>
+                <lightning-button label="Next" onclick={handleNextClick} disabled={disableNextLast}></lightning-button>
+                <lightning-button label="Last" onclick={handleLastClick} disabled={disableNextLast}></lightning-button>
+             </lightning-button-group>
+          </lightning-layout-item>
+       </lightning-layout>
+    </lightning-card>
+ </template>

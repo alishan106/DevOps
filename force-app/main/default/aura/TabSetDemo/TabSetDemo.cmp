@@ -1,0 +1,31 @@
+<aura:component>
+    <aura:handler name="init" value="{! this }" action="{! c.init }" />
+    <aura:attribute name="tabs" type="Object[]" />
+<div class="slds-grid slds-gutters">
+  <div class="slds-col slds-size_1-of-2">
+    <lightning:tabset onselect="{! c.handleSelect }" variant="scoped">
+        <aura:iteration items="{! v.tabs }" var="tab">
+            <lightning:tab label="{! tab.label }" id="{! tab.id }">
+                {! tab.content }
+            </lightning:tab>
+        </aura:iteration>
+    </lightning:tabset>
+      </div>
+  <div class="slds-col slds-size_1-of-2">
+    <lightning:tabset variant="vertical" selectedTabId="two">
+        <lightning:tab label="Account" id="one">
+        Account Info
+        </lightning:tab>
+        <lightning:tab label="Contact" id="two">
+        Contact Info
+        </lightning:tab>
+        <lightning:tab label="Case" id="three">
+        Case Info
+        </lightning:tab>
+        <lightning:tab label="Opportunity" id="four">
+        Opportunity Info
+        </lightning:tab>    
+    </lightning:tabset>
+      </div>
+</div>
+</aura:component>

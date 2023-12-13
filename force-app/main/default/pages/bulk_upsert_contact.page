@@ -1,0 +1,25 @@
+<apex:page showHeader="false" tabStyle="Contact" title="Bulk Records Upsert" Controller="BulkUpsertContactController" >
+    <apex:sectionHeader title="Contacts" subtitle="Upsert Records"/>
+    <apex:messages />
+    <apex:form id="temp">
+        <apex:pageBlock title="Upsert Contact Records">
+            <apex:pageBlockButtons >
+                <apex:commandButton value="Add" action="{!addrow}" reRender="temp"/>
+                <apex:commandButton value="Delete" action="{!deleteRow}"  reRender="temp" />
+                <apex:commandButton value="Save" action="{!bulkSave}" />
+                <apex:commandButton value="Cancel" action="{!cancel}" />
+            </apex:pageBlockButtons>
+            <apex:pageBlockTable value="{!ContactList}" var="addContact">
+                <apex:column headerValue="First Name">
+                    <apex:inputField value="{!addContact.FirstName}" />
+                </apex:column>
+                <apex:column headerValue="Last Name">
+                    <apex:inputField value="{!addContact.LastName}" required="false"/>
+                </apex:column>
+                <apex:column headerValue="Account">
+                    <apex:inputField value="{!addContact.AccountId}" />
+                </apex:column>
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

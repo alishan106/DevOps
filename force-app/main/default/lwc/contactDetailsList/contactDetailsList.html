@@ -1,0 +1,36 @@
+<template>
+    <lightning-card title="Contact Details" icon-name="custom:custom88">
+        <lightning-layout class="slds-m-around_small">
+            <lightning-layout-item size="12">
+                <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_col-bordered">
+                    <thead>
+                        <tr>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Account</th> 
+                            <th>Phone</th>
+                            <th>Email</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <template for:each={listOfContacts} for:item="item" for:index="index">
+                            <tr key={item.Id}>
+                                <td><lightning-formatted-text value={item.FirstName}></lightning-formatted-text></td>
+                                <td><lightning-formatted-text value={item.LastName}></lightning-formatted-text></td>
+                                <template if:true={item.Account}>
+                                    <td><lightning-formatted-text value={item.Account.Name}></lightning-formatted-text></td>
+                                </template>
+                                <template if:false={item.Account}>
+                                    <td><lightning-formatted-text></lightning-formatted-text></td>
+                                </template>
+                                <td><lightning-formatted-phone value={item.Phone}></lightning-formatted-phone></td>
+                                <td><lightning-formatted-email value={item.Email}></lightning-formatted-email></td>                                
+                            </tr> 
+                        </template>
+                    </tbody>
+                </table>
+                
+            </lightning-layout-item>
+        </lightning-layout>
+    </lightning-card>
+</template>

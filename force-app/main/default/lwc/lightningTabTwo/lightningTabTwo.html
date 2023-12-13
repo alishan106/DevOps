@@ -1,0 +1,72 @@
+<template>
+
+
+    <lightning-tabset active-tab-value={activeTab}>
+    <lightning-tab label="Account">
+        <div class="slds-m-around_medium">
+		<template if:true={accRecords}>
+			<table border="1">
+				<tr>
+					<th>Id</th>
+					<th>Name</th>
+					<th>Type</th>
+				</tr>
+				<template for:each={accRecords} for:item="account">
+					<tr key={account.Id}>
+						<th>{account.Id}</th>
+						<th>{account.Name}</th>
+						<th>{account.Type}</th>
+					</tr>
+				</template>
+			</table>
+		</template>
+	</div>
+    </lightning-tab>
+            <lightning-tab label="Contact"  value="2" onactive={handleActive}>
+                <div class="slds-m-around_medium">
+		<template if:true={contactsRec}>
+			<table border="1">
+				<tr>
+					<th>Id</th>
+					<th>FirstName</th>
+					<th>LastName</th>
+				</tr>
+				<template for:each={conRecords} for:item="contact">
+					<tr key={contact.Id}>
+						<th>{contact.Id}</th>
+						<th>{contact.FirstName}</th>
+						<th>{contact.LastName}</th>
+					</tr>
+				</template>
+			</table>
+		</template>
+	</div>
+            </lightning-tab>
+           
+            <lightning-tab label="Case"  value="3" onactive={handleActive}>
+                Case Dummy Data...
+            </lightning-tab>
+           
+            <lightning-tab label="Opportunity"  value="4" onactive={handleActive}>
+                <div class="slds-m-around_medium">
+		<template if:true={opportunityRec}>
+			<table border="1">
+				<tr>
+					<th>Id</th>
+					<th>Name</th>
+					<th>StageName</th>
+				</tr>
+				<template for:each={oppRecords} for:item="opportunity">
+					<tr key={opportunity.Id}>
+						<th>{opportunity.Id}</th>
+						<th>{opportunity.Name}</th>
+						<th>{opportunity.StageName}</th>
+					</tr>
+				</template>
+			</table>
+		</template>
+	</div>
+            </lightning-tab>
+    </lightning-tabset>
+	
+</template>

@@ -1,0 +1,41 @@
+<template>
+    
+    <lightning-card title="Subscriber" class="slds-m-around_medium" icon-name="custom:custom9">
+                <lightning-layout class="slds-m-around_medium">
+                    <table id="customers">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Name</th>
+                                <th>Quantity</th>
+                                <th>Price</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <template for:each={unitDetailSub} for:item="prod" for:index="Index">
+                                <tr key={prod.name}>
+                                    <td>{Index}</td>
+                                    <td>{prod.name}</td>
+                                    <td>{prod.qty}</td>
+                                    <td>{prod.price}</td>
+                                </tr>
+                            </template>
+                        </tbody>
+                    </table>   
+                </lightning-layout>
+                <lightning-layout class="slds-m-around_medium">
+                <table>
+                    <tr>
+                        <th>Grand Total</th>
+                        <th>{grandTotal}</th>
+                    </tr>
+                </table>
+                </lightning-layout>
+                <lightning-layout class="slds-m-around_medium">
+                    <lightning-input type="checkbox" name="editProduct"
+                              label="If you want to do any changes"
+                              onchange={editMode}
+                              ></lightning-input>
+                    </lightning-layout>
+    </lightning-card>
+</template>

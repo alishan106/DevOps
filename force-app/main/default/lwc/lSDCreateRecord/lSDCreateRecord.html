@@ -1,0 +1,7 @@
+<template>
+    <lightning-card title="List of All Lead" class="slds-p-around_small slds-m-around_small">
+    <lightning-input type="text" label="LastName" onchange={handleFilesChange}></lightning-input>
+    <lightning-input type="number" label="Percent" min="0" max="100" formatter="percent-fixed" step="0" ></lightning-input>
+    <lightning-button variant="base" label="Save" title="Save" onclick={handleSave}></lightning-button>
+    </lightning-card>
+</template>

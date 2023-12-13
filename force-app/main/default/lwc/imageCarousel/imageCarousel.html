@@ -1,0 +1,35 @@
+<template>
+    <lightning-card>
+        <div class="slds-m-around_medium">
+            <div class="slds-grid slds-grid_align-center">
+                <div class="slds-col slds-size_4-of-12">
+                    <span style="display: inline-block; margin-right:10px;"><img src={img}></span>
+                </div>
+            </div>
+            <br />
+            <div class="slds-grid slds-grid_align-center" style="align-items: center;">                
+                <div class="slds-col slds-size_1-of-12">
+                    <template if:false={previousButtonValue}>
+                    <span style="float:right;" class="slds-box" onclick={previousClick}>
+                        <lightning-icon icon-name="utility:chevronleft"></lightning-icon>
+                    </span>
+                    </template>
+                </div>
+                <template for:each={tempImgList} for:item="items" for:index="idx">
+                    <div class="slds-col slds-size_1-of-12" key={items.label}>
+                        <span style="display: inline-block; margin-right:10px; margin-left:10px;"><img src={items.value} alt="Loading" data-id={idx}
+                                class={items.active} onclick={handleImageClick}></span>
+                                <h1>{items.active}</h1>
+                    </div>
+                </template>                
+                <div class="slds-col slds-size_1-of-12">
+                    <template if:false={nextButtonValue}>
+                    <span style="display: inline-block;" class="slds-box" onclick={nextClick}>
+                        <lightning-icon icon-name="utility:chevronright"></lightning-icon>
+                    </span>
+                </template>
+                </div>                
+            </div>
+        </div>
+    </lightning-card>
+</template>

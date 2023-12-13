@@ -1,0 +1,6 @@
+<aura:component>
+    <aura:handler name="SourceComponent" event="c:CompEvent" action="{!c.handleEvent}" />
+    Root Component
+    <c:HandleComponent/>
+
+</aura:component>

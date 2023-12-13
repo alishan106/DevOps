@@ -1,0 +1,3 @@
+<apex:component >
+    Welcome to VF Component
+</apex:component>

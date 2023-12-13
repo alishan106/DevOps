@@ -1,0 +1,60 @@
+<template>
+    <lightning-card icon-name="contact">
+    <p>Welcome to LWC {priv}</p>
+    <template if:true={id1}>
+        {priv}
+    </template>
+    <template if:false={id1}>
+        No Value Available
+    </template>
+    </lightning-card>
+    <lightning-card>
+        
+            <dl>
+                <dt>{name}</dt>
+                <dd>{name}{name}</dd>
+                <dd>{name}{name}</dd>
+                <dt>{name}</dt>
+                <dd>{name}{name}</dd>
+                <dd>{name}{name}</dd>
+            </dl>
+            <lightning-button onclick={method} variant="success" label="Click Here"></lightning-button>
+            <lightning-input type="text" value={id1} label="Input Text" name="inp1" onchange={inpHandle}></lightning-input>
+            <lightning-input type="date"  value={id2} label="Input Date" name="inp2" onchange={inpHandle}></lightning-input>
+            <lightning-input type="email"  value={id3} label="Input Email" name="inp3" onchange={inpHandle}></lightning-input>
+            <lightning-button onclick={method} label="Show Your Input"></lightning-button>
+    </lightning-card>
+    <lightning-card title="Foratted Lightning Card" icon-name="custom:custom2" class="slds-p-around_x-small">
+        <lightning-layout-item padding="around-small">
+            <lightning-formatted-text value={text}>
+            </lightning-formatted-text>
+        </lightning-layout-item>
+        <lightning-layout-item padding="around-small">
+            <lightning-formatted-email value={mail}>
+            </lightning-formatted-email>
+        </lightning-layout-item>
+        <lightning-layout-item padding="around-small">
+            <lightning-formatted-phone value={phone}>
+            </lightning-formatted-phone>
+        </lightning-layout-item>
+        <lightning-layout-item padding="around-small">
+            <lightning-formatted-text value={text}>
+            </lightning-formatted-text>
+        </lightning-layout-item>
+        <lightning-layout-item padding="around-small">
+            <lightning-formatted-email value={mail}>
+            </lightning-formatted-email>
+        </lightning-layout-item>
+        <lightning-layout-item padding="around-small">
+            <lightning-formatted-phone value={phone}>
+            </lightning-formatted-phone>
+        </lightning-layout-item>
+        <!-- <lightning-layout-item padding="around-small">
+            <lightning-formatted-text value={userId}></lightning-formatted-text>
+        </lightning-layout-item> -->
+        <lightning-layout-item padding="around-small">
+            <lightning-button label="Call JS" variant="brand" onclick={jsCall}></lightning-button>
+        </lightning-layout-item>
+        
+    </lightning-card>
+</template>

@@ -1,0 +1,13 @@
+<template>
+    <lightning-card title="Alert Message" icon-name="custom:custom11">
+        <lightning-layout class="slds-m-around_small" style="align-items: flex-end;">
+            <lightning-layout-item size="9">
+                <lightning-input type="text" label="Label" class="inp" onchange={handleChange}>
+                </lightning-input>
+            </lightning-layout-item>
+            <lightning-layout-item size="3">
+                <lightning-button type="submit" variant="brand" label="Submit" onclick={handleSubmit} class="slds-m-left_small"></lightning-button>
+            </lightning-layout-item>
+        </lightning-layout>
+    </lightning-card>
+</template>

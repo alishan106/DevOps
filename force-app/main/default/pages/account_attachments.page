@@ -1,0 +1,69 @@
+<apex:page controller="AccountAttachmentsController" sidebar="false">
+    <apex:pageBlock >
+        <apex:pageBlockTable value="{!Records}" var="Rec">
+            <apex:column >
+                <apex:facet name="header">Account Name</apex:facet>
+                <apex:outputText value="{!Rec.Name}"/>
+            </apex:column>
+            <apex:column >
+                <apex:facet name="header">Email</apex:facet>
+                <apex:outputText value="{!Rec.Email_Gmail__c}"/>
+            </apex:column>
+            <apex:column >
+                <apex:facet name="header">Phone</apex:facet>
+                <apex:outputText value="{!Rec.phone}"/>
+            </apex:column>
+            <apex:column headerValue="Attachments Type">
+                
+                <!----------------------------------------------------Blank Attachments---------------------------------------------->
+                
+                <apex:image rendered="{!if(Rec.Attachments != null && Rec.Attachments.size>0,false,true)}"
+                            url="{!$Resource.Attachment_Logo}"  height="50" width="50"/>
+                
+                <!----------------------------------------------------Pdf Type Attachments-------------------------------------------->
+                
+                <apex:image rendered="{!if(Rec.Attachments != null && Rec.Attachments.size>0 
+                                      && Rec.Attachments[0].contentType=='application/pdf',true,false)}"
+                            url="{!$Resource.pdf}" height="50" width="50"/>
+                
+                <!----------------------------------------------------Image Type Attachments----------------------------------------->                
+                
+                <apex:image rendered="{!if(Rec.Attachments != null 
+                                      && Rec.Attachments.size>0 
+                                      && Begins(Rec.Attachments[0].contentType,'image/'),true,false)}"
+                            url="/servlet/servlet.FileDownload?file={!Rec.Attachments[0].Id}" height="50" width="50"/>
+                
+                <!----------------------------------------------------Word Type Attachments----------------------------------------->                
+                
+                <apex:image rendered="{!if(Rec.Attachments != null 
+                                      && Rec.Attachments.size>0 
+                                      && Rec.Attachments[0].
+                                      contentType=='application/vnd.openxmlformats-officedocument.wordprocessingml.document',true,false)}"
+                            url="{!$Resource.excel}" height="50" width="50"/>
+                
+                <!----------------------------------------------------Excel Type Attachments------------------------------------>                
+                
+                <apex:image rendered="{!if(Rec.Attachments != null 
+                                      && Rec.Attachments.size > 0 
+                                      && Rec.Attachments[0].contentType=='application/vnd.ms-excel',true,false)}"
+                            url="{!$Resource.word}" height = "50" width = "50"/>
+                
+            </apex:column>
+            <apex:column headervalue="Preview Attachment" >           
+                <apex:outputLink value="/servlet/servlet.FileDownload?file={!Rec.Attachments[0].Id}"
+                                 rendered="{!if(Rec.Attachments != null && Rec.Attachments.size > 0 
+                                           && (Begins(Rec.Attachments[0].contentType,'image/')
+                                           || Rec.Attachments[0].contentType=='application/pdf'),'True','False')}"
+                                 target="_Blank">Preview
+                </apex:outputLink>
+                <apex:outputLink value="/servlet/servlet.FileDownload?file={!Rec.Attachments[0].Id}"
+                                 rendered="{!if(Rec.Attachments != null && Rec.Attachments.size > 0
+                                           && (Rec.Attachments[0].
+                                           contentType=='application/vnd.openxmlformats-officedocument.wordprocessingml.document' 
+                                           || Rec.Attachments[0].contentType=='application/vnd.ms-excel')
+                                           ,'True','False')}">Preview
+                </apex:outputLink>
+            </apex:column>
+        </apex:pageBlockTable>        
+    </apex:pageBlock>    
+</apex:page>

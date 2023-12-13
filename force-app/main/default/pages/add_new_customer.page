@@ -1,0 +1,109 @@
+<apex:page sidebar="false" tabStyle="Hotel_Customer__c" title="Hotel customer" controller="AddCustomerController">
+    <apex:sectionHeader title="Customer" subtitle="Hotel Customer" />
+    <apex:pageMessages />
+    <apex:form id="formId" >       
+        <apex:pageBlock mode="edit" rendered="{!inputscreen}">       
+            <apex:pageBlockButtons >
+                <apex:commandButton value="Save" action="{!addCustomer}" />
+                <apex:commandButton value="Save & New" action="{!saveNnew}" rendered="{!saveNnewOn}" />
+                <apex:commandButton value="Cancel" action="{!cancelCustomer}" />
+            </apex:pageBlockButtons>
+            <apex:pageBlockSection >
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >First Name</apex:outputLabel>
+                    <apex:inputText value="{!customer.First_Name__c}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Last Name</apex:outputLabel>
+                    <apex:inputText value="{!customer.Last_Name__c}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Gender</apex:outputLabel>
+                    <apex:selectList value="{!customer.Gender__c}" multiselect="false" size="1">
+                        <apex:selectOption itemValue="MALE" itemLabel="Male"/>
+                        <apex:selectOption itemValue="FEMALE" itemLabel="Female"/>
+                    </apex:selectList>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Address</apex:outputLabel>
+                    <apex:inputTextarea value="{!customer.Address__c}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >City</apex:outputLabel>
+                    <apex:inputText value="{!customer.City__c}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Email</apex:outputLabel>
+                    <apex:inputText value="{!customer.Email__c}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Phone</apex:outputLabel>
+                    <apex:inputText value="{!customer.Phone__c}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Nationality</apex:outputLabel>
+                    <apex:selectList value="{!customer.Nationality__c}" multiselect="false" size="1">
+                        <apex:selectOption itemValue="None" itemLabel="--None--"/>
+                        <apex:selectOption itemValue="NRI" itemLabel="NRI"/>
+                        <apex:selectOption itemValue="INDIAN" itemLabel="Indian"/>
+                        <apex:selectOption itemValue="FORIEGNER" itemLabel="Foriegner"/>
+                    </apex:selectList>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Is Married</apex:outputLabel>
+                    <apex:inputCheckbox value="{!customer.Is_Married__c}"/>
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+        <!----------------------------------------------------------------------------------------------------------------------------------- --
+VIEW SCREEN
+--------------------------------------------------------------------------------------------------------------------------------------->        
+        
+        <apex:pageBlock title="Hotel Customer" mode="edit" rendered="{!outputscreen}">
+            <apex:pageBlockButtons >
+                <apex:commandButton value="Edit" action="{!editCustomer}" reRender="dummyId">
+                    <apex:param name="" value="{!customer.Id}" assignTo="{!customerId}" />
+                </apex:commandButton>
+                <apex:commandButton value="Cancel" action="{!cancelCustomer}" />
+            </apex:pageBlockButtons>
+            <apex:pageBlockSection >
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >First Name</apex:outputLabel>
+                    <apex:outputText value="{!customer.First_Name__c}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Last Name</apex:outputLabel>
+                    <apex:outputText value="{!customer.Last_Name__c}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Gender</apex:outputLabel>
+                    <apex:outputText value="{!customer.Gender__c}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem rendered="true">
+                    <apex:outputLabel >Address</apex:outputLabel>
+                    <apex:outputText value="{!customer.Address__c}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >City</apex:outputLabel>
+                    <apex:outputText value="{!customer.City__c}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Email</apex:outputLabel>
+                    <apex:outputText value="{!customer.Email__c}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Phone</apex:outputLabel>
+                    <apex:outputText value="{!customer.Phone__c}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem rendered="true">
+                    <apex:outputLabel >Nationality</apex:outputLabel>
+                    <apex:outputText value="{!customer.Nationality__c}"/>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem rendered="true">
+                    <apex:outputLabel >Is Married</apex:outputLabel>
+                    <apex:inputCheckbox value="{!customer.Is_Married__c}"/>
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+        </apex:pageBlock>    
+    </apex:form>
+</apex:page>

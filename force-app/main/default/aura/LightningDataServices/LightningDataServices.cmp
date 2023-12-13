@@ -1,0 +1,42 @@
+<aura:component implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId" access="global" >
+	
+    <aura:attribute name="recordObject" type="Object"/>
+    <aura:attribute name="recordField" type="Object"/>
+    <aura:attribute name="recordError" type="String"/>
+    <aura:attribute name="recordCreateObject" type="Object"/>
+    <aura:attribute name="recordCreateField" type="Object"/>
+    <aura:attribute name="recordCreateError" type="String"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <force:recordData aura:id="recordViewer"
+                      layoutType="FULL"
+                      recordId="{!v.recordId}"
+                      targetError="{!v.recordError}"
+                      targetRecord="{!v.recordObject}"
+                      targetFields ="{!v.recordField}"
+                      mode="VIEW" />
+    <h1>Using targetFields</h1><br/>
+    <h2>{!v.recordField.Id}</h2>
+    <h2>{!v.recordField.Name}</h2>
+    <h2>{!v.recordField.Website}</h2>
+    <h2>{!v.recordField.Phone}</h2>
+    <br/>
+    <h1>Using targetRecord</h1><br/>
+    <h2>{!v.recordObject.fields.Id.value}</h2>
+    <h2>{!v.recordObject.fields.Name.value}</h2>
+    <h2>{!v.recordObject.fields.Website.value}</h2>
+    <h2>{!v.recordObject.fields.Phone.value}</h2><br/>
+    <force:recordData aura:id="recordCreator"
+                      layoutType="FULL"
+                       recordId="{!v.recordId}"
+                      targetError="{!v.recordCreateError}"
+                      targetRecord="{!v.recordCreateObject}"
+                      targetFields ="{!v.recordCreateField}"
+                      mode="EDIT" /> 
+    <div>
+    <lightning:input required="true" label="Group Name" value="{!v.recordCreateField.Account_Group_Name__c}" />
+    <lightning:input required="true" label="Email" value="{!v.recordCreateField.Email_Gmail__c}" />
+    <lightning:input required="true" label="Account Name" value="{!v.recordCreateField.Name}" />
+        <lightning:button label="Save Record" onclick="{!c.onSave}" /> 
+    </div>
+    
+</aura:component>

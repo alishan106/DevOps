@@ -1,0 +1,30 @@
+<template>
+    <lightning-card title="Simple Calculator">
+    <div class="slds-align_absolute-center">
+    <lightning-input label="Number 1" type="number" name="Number1" value={num1} onchange={handleChange} style="width:350px;">
+    </lightning-input>
+    </div>
+    <div class="slds-align_absolute-center">
+    <lightning-input label="Number 2" type="number" name="Number2" value={num2} onchange={handleChange} style="width:350px;">
+    </lightning-input>
+    </div><br>
+    
+    <div class="slds-align_absolute-center" id="dcalc" >
+    <lightning-button variant="brand" label="Add" onclick={calcExpr} disabled={disableButton}></lightning-button>&nbsp;
+    <lightning-button variant="brand-outline" label="Subtract" onclick={calcExpr} disabled={disableButton}></lightning-button>&nbsp;
+    <lightning-button variant="success" label="Multiply" onclick={calcExpr} disabled={disableButton}></lightning-button>&nbsp;
+    <lightning-button variant="Destructive" label="Devide" onclick={calcExpr} disabled={disableButton}></lightning-button>&nbsp;
+    <lightning-button variant="brand-outline" label="Mod" onclick={calcExpr} disabled={disableButton}></lightning-button>
+    </div>
+    <br>
+    
+    <div class="slds-align_absolute-center">
+      
+    <!-- <lightning-input variant="destructive" label="Result" name="result" read-only="true" value={result}></lightning-input> -->
+    <p>Result : {result}</p>&nbsp;&nbsp;
+    <template if:true={result}>
+    <lightning-button variant="brand-outline" label="Clear All" onclick={clrResult}></lightning-button>
+  </template>
+    </div>
+    </lightning-card>
+  </template>

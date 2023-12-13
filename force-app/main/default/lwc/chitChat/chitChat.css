@@ -1,0 +1,21 @@
+.container {
+    background-color: #DCF8C6;
+    text-align: left;
+    color:#303030;
+    font-size: large;
+    font-family:'Courier New', Courier, monospace;
+    border-radius: 5px;
+    padding: 0px 10px 2px 10px;
+    margin: 40px;
+  }
+
+  .time-right {
+    float: right;
+    color: #4FC3F7;
+    font-size: small;
+  }
+  .UserName {
+    float: left;
+    color : rgb(190, 43, 209);
+    font-size: small;
+  }

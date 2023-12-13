@@ -1,0 +1,16 @@
+<apex:component >
+    <apex:pageBlockSection title="" collapsible="false" >
+        	<apex:pageBlockSectionItem >
+            	<apex:image url="{!$Resource.alishan_logo}" height="60"/>            
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem >
+            	<b>Zeeshan Ali</b>
+                <br/>
+                <b>Software Devloper Traniee</b>
+                <br/><b>At</b>
+                    <apex:image url="{!$Resource.iBirds_logo}" height="50" width="50"/>
+            </apex:pageBlockSectionItem>
+        </apex:pageBlockSection>
+            <apex:pageBlockSection title="" collapsible="false">
+            </apex:pageBlockSection>
+</apex:component>

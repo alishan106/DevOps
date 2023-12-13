@@ -1,0 +1,17 @@
+<aura:component implements = "force:appHostable,flexipage:availableForAllPageTypes" controller ="HelloAuraClass" access= "global">
+    <center><h1>Hello Aura</h1></center>
+    <aura:handler name="init" action="{!c.getHeloAuraClass}" value ="{!this}" />
+    <aura:attribute name="conList" type="List" />
+    <lightning:card title="Contacts">
+    <aura:iteration items="{!v.conList}" var="contact">
+        <lightning:recordViewForm recordId="{!contact.Id}" objectApiName="Contact">
+            <lightning:outputField fieldName="FirstName" />
+            <lightning:outputField fieldName="LastName" />
+            <lightning:outputField fieldName="Phone" />
+            <lightning:outputField fieldName="Email" />
+        </lightning:recordViewForm>
+        <br/>      
+        </aura:iteration>
+    </lightning:card>
+
+</aura:component>

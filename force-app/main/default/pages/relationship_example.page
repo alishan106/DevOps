@@ -1,0 +1,25 @@
+<apex:page controller="RelationshipController" showHeader="false" tabStyle="Contact">
+    <apex:pageBlock >
+    	<apex:pageBlockSection columns="1" title="Contact List" collapsible="false">
+        	<apex:pageBlockTable value="{!contactList}" var="contact">
+            	<apex:column value="{!contact.name}" />
+                <apex:column value="{!contact.phone}" />
+                <apex:column value="{!contact.email}" />
+                <apex:column value="{!contact.account.name}"/>
+                <apex:column value="{!contact.account.Email_Gmail__c}"/>
+            </apex:pageBlockTable>
+        </apex:pageBlockSection>
+        <apex:pageBlockSection columns="1" title="Account List" collapsible="false">
+            <apex:pageBlockTable value="{!accountList}" var="account">
+            	<apex:column value="{!account.name}" />
+                <apex:column value="{!account.phone}" />
+                <apex:column value="{!account.Email_Gmail__c}" />
+                <apex:column headerValue="Contact Name">
+                    <apex:repeat value="{!account.contacts}" var="contact">
+                    	{!contact.Name}
+                    </apex:repeat>
+                </apex:column>
+            </apex:pageBlockTable>
+        </apex:pageBlockSection>              
+    </apex:pageBlock>
+</apex:page>

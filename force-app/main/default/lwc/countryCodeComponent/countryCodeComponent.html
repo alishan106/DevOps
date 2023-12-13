@@ -1,0 +1,11 @@
+<template>
+    <div class="slds-form-element__control slds-m-top_small">
+        <input type="phone" class="slds-input validate" data-id="country"  name="country" value="" onblur={onBlurHandle} onfocus={onChangeHandle}></input>
+    </div>
+    <lightning-button label="Add" onclick={flagAndCounrtyCode}></lightning-button>
+    <template for:each={tempArr} for:item="car">
+        <div key = {car}>
+            <lightning-input type="text" ></lightning-input>
+        </div>
+    </template>
+</template>

@@ -1,0 +1,25 @@
+<template>
+
+    <lightning-card title="List of All Lead" class="slds-p-around_small slds-m-around_small">
+        
+        <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+            <thead>
+                <th>Name</th>
+                <th>Company</th>
+                <th>Email</th>
+                <th>Phone</th>
+            </thead>
+            <tbody>
+            <template for:each={allLeadList} for:item="lead" for:index="idx">                
+                <tr key={lead.Id}>
+                    <td>{lead.Name}</td>
+                    <td>{lead.Company}</td>
+                    <td>{lead.Email}</td>
+                    <td>{lead.Phone}</td>                    
+                </tr>
+            </template>
+            </tbody>
+        </table>
+    </lightning-card>
+    
+</template>

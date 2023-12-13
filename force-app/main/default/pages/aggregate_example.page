@@ -1,0 +1,43 @@
+<apex:page controller="AggregateController" showHeader="false" tabStyle="Contact">
+    <apex:pageBlock >
+    	<apex:pageBlockSection columns="1" title="Contact List" collapsible="false">
+        	<apex:pageBlockTable value="{!accountAggregateList}" var="accountAggregate">
+            	<apex:column value="{!accountAggregate['rating']}">
+                    <apex:facet name="header">Rating</apex:facet>
+                </apex:column>                
+                <apex:column value="{!accountAggregate['expr0']}">
+                    <apex:facet name="header">Rating</apex:facet>
+                </apex:column>
+                <!--	<apex:column value="{!accountAggregate['total']}">
+                    <apex:facet name="header">Rating</apex:facet>
+                </apex:column>	-->
+            </apex:pageBlockTable>            
+        </apex:pageBlockSection>
+        
+        <apex:pageBlockSection columns="1">
+        	<apex:pageBlockTable value="{!oppAggregateList}" var="oppAggregate">
+                <apex:column value="{!oppAggregate['stageName']}">
+                    <apex:facet name="header">Stage</apex:facet>
+                </apex:column>
+            	<apex:column value="{!oppAggregate['expr0']}">
+                    <apex:facet name="header">Total Opportunity</apex:facet>
+                </apex:column>                
+                <apex:column value="{!oppAggregate['expr1']}">
+                    <apex:facet name="header">Total Amount</apex:facet>
+                </apex:column>
+                <apex:column value="{!oppAggregate['minimumAmount']}">
+                    <apex:facet name="header">Minimum Amount</apex:facet>
+                </apex:column>
+                <apex:column value="{!oppAggregate['expr2']}">
+                    <apex:facet name="header">Maximum Amount</apex:facet>
+                </apex:column>
+                <apex:column value="{!oppAggregate['expr3']}">
+                    <apex:facet name="header">Average Amount</apex:facet>
+                </apex:column>
+                <!--	<apex:column value="{!accountAggregate['total']}">
+                    <apex:facet name="header">Rating</apex:facet>
+                </apex:column>	-->
+            </apex:pageBlockTable>
+        </apex:pageBlockSection>
+    </apex:pageBlock>
+</apex:page>

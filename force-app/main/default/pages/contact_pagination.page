@@ -1,0 +1,45 @@
+<apex:page controller="ContactPaginnationController" sidebar="false" showHeader="false">
+    <apex:form id="details" >
+        <apex:pageBlock >
+            <apex:actionFunction name="refreshPageSize" action="{!refreshPageSize}" status="fetchStatus" reRender="details"/>
+            <apex:pageBlockSection collapsible="false" columns="1" title="Contact List">
+                <apex:pageBlockSectionItem >
+                    <apex:selectList value="{!limitSize}" multiselect="false" size="1" onchange="refreshPageSize();">
+                        <apex:selectOptions value="{!selectList}"/>
+                    </apex:selectList>
+                </apex:pageBlockSectionItem>
+                <apex:actionStatus startText="Loading......." id="fetchStatus">
+                </apex:actionStatus>
+                <apex:pageBlockSectionItem >
+                    <apex:pageblockTable value="{!contactList}" var="con">
+                        <apex:column value="{!con.Name}"/>
+                        <apex:column value="{!con.LastName}"/>
+                        <apex:column value="{!con.email}"/>
+                        <apex:column value="{!con.phone}"/>
+                    </apex:pageblockTable>
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+            <apex:pageBlockSection >
+                        <apex:outputLabel >
+                            {!(offsetSize)+1}-{!IF((offsetSize + limitSize)>totalRecs, totalRecs,
+                            (offsetSize + limitSize))} of {!totalRecs}
+                        </apex:outputLabel>
+                        <apex:panelGrid columns="12" style="float:right;">
+                            <apex:actionStatus startText="Loading......." id="fetchStatus"></apex:actionStatus>
+                            <apex:commandButton value="First Page" rerender="details" action="{!FirstPage}" disabled="{!prev}" status="fetchStatus"/>
+                            <apex:commandButton value="Previous" rerender="details" action="{!previous}" disabled="{!prev}" status="fetchStatus"/>
+                            
+                            <apex:repeat value="{!btnNumber}"  var="var1">
+                                <apex:commandButton value="{!var1}" action="{!pageChange}" reRender="details" status="fetchStatus">
+                                	<apex:param name="btnVar" value="{!var1}" assignTo="{!btnNum}" />
+                                </apex:commandButton>
+                            </apex:repeat>
+                          
+                            <apex:commandButton value="Next"  action="{!next}" disabled="{!nxt}" rerender="details" status="fetchStatus"/>
+                            <apex:commandButton value="Last Page" rerender="details" action="{!LastPage}" disabled="{!nxt}" status="fetchStatus" /> 
+                        </apex:panelGrid>
+            </apex:pageBlockSection>
+            <c:FooterComponent ></c:FooterComponent>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

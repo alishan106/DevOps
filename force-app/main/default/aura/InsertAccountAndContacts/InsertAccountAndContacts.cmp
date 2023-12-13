@@ -1,0 +1,87 @@
+<aura:component implements="flexipage:availableForAllPageTypes" controller="InsertAccountContactController" access="global" >
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:attribute name="newAccount" type="List" />
+    <aura:attribute name="inputValue" type="String"/>
+    <aura:attribute name="fieldMap" type="Map" />
+    <aura:attribute name="accType" type="Account"/>
+    <form>      
+        <aura:iteration items="{!v.newAccount}" var="acc" indexVar="index">
+            <lightning:card title="Account" class="slds-p-around_xx-large">
+                <div class="slds-form_horizontal slds-form slds-grid slds-wrap">
+                    <lightning:input type="Text" value="{!acc.Name}" class="slds-size_1-of-4" label="Name" />
+                    <lightning:select value="{!acc.Type}" class="slds-size_1-of-4" label="Type">
+                        <option value="">-None-</option>
+                        <option value="Prospect">Prospect</option>
+                        <option value="Customer - Direct">Customer - Direct</option>
+                        <option value="Customer - Channel">Customer - Channel</option>
+                        <option value="Channel Partner / Reseller">Channel Partner / Reseller</option>
+                        <option value="Installation Partner">Installation Partner</option>
+                        <option value="Technology Partner">Technology Partner</option>
+                        <option value="Other">Other</option>
+                    </lightning:select>
+                    <lightning:select aura:id="industryPicklist" value="{!v.accType.Type}" onchange="{!c.handleOnChange}" name="accType" label="Type">
+                    <option value="">--None--</option>
+                    <aura:iteration items="{!v.fieldMap}" var="i" indexVar="key">
+                        <option text="{!i.value}" value="{!acc.Type}" selected="{!i.key==v.accType.Type}" />
+                    </aura:iteration>
+                </lightning:select>
+                    <lightning:input type="tel" value="{!acc.Phone}" class="slds-size_1-of-4" label="Phone"/>
+                    <lightning:button class="slds-button_neutral slds-m-left_small slds-size_1-of-11" onclick="{!c.addAccountBox}" label = "Add New Account"/>
+                    <lightning:button name="{!index}" aura:id="{!index}" class="slds-button_neutral slds-m-left_small slds-size_1-of-11" onclick="{!c.addContactBox}" label = "Add Contacts" />
+                </div>
+                <br/>
+                <div class="slds-p-horizontal_large">
+                    <div class="slds-text-heading_small"><b>Relates Contacts</b></div><br/> 
+                    <aura:iteration items="{!acc.Contacts}" var="con" indexVar="index">                        
+                        <div class="slds-form_horizontal slds-form slds-grid slds-wrap">
+                            <lightning:input type="Text" value="{!con.FirstName}" aura:id="contactName" class="slds-size_1-of-4" label="First Name"/>
+                            <lightning:input type="Text" value="{!con.LastName}" aura:id="contacLname" class="slds-size_1-of-4" label="Last Name"/>
+                            <lightning:input type="email" value="{!con.Email}" aura:id="contactemail" class="slds-size_1-of-4" label="Email"/>
+                        </div>
+                    </aura:iteration>                    
+                </div>
+                    <lightning:layout>
+                        <lightning:layoutItem padding="around-small">
+                        <lightning:input type="Text" ></lightning:input>
+                        </lightning:layoutItem>
+                        <lightning:layoutItem padding="around-small">
+                        <c:countryCodeComponent ongetphone="{!c.getCountryCode}"/>
+                        </lightning:layoutItem>
+                    </lightning:layout> 
+            </lightning:card>
+        </aura:iteration>
+        <div class="slds-align_absolute-center" style="height:5rem"><lightning:button label = "Save" class="slds-button_brand" onclick="{!c.insertRecords}" /></div>
+    </form>
+</aura:component>
+ 
+
+<!-- <div class="slds-p-around_medium">
+            <lightning:recordEditForm objectApiName="Account" onsubmit="{!c.handleSubmit}">
+                <lightning:messages />                
+                <lightning:button type="submit" name="Submit" label="submit" class="slds-m-top_medium"/>
+            </lightning:recordEditForm>
+            <lightning:recordEditForm objectApiName="Contact" onsubmit="{!c.handleSubmit}">
+                <lightning:messages />
+                <lightning:inputField fieldName="FirstName" />
+                <lightning:inputField fieldName="LastName" />
+                <lightning:inputField fieldName="Email" />
+                <lightning:button type="submit" name="Submit" label="submit" class="slds-m-top_medium"/>
+            </lightning:recordEditForm>
+        </div>
+        <div>
+        <lightning:layout>
+           <lightning:recordEditForm objectApiName="Account" onsubmit="{!c.handleSubmit}"> 
+            <lightning:layoutItem padding="around-small" size="12">
+                <lightning:inputField fieldName="Name" />
+    <lightning:inputField fieldName="Type" />
+    <lightning:inputField fieldName="Phone" />                 
+            </lightning:layoutItem>
+            <lightning:layoutItem padding="around-small">
+                
+            </lightning:layoutItem>
+            <lightning:layoutItem padding="around-small">
+               
+            </lightning:layoutItem>
+            </lightning:recordEditForm>
+        </lightning:layout>
+    </div> -->

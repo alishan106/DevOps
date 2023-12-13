@@ -1,0 +1,78 @@
+<apex:page sidebar="false" controller="MergeAttachmentController" tabStyle="Product2">
+    <style type="text/css"> 
+        .custPopup{ background-color: white; border-width: 2px; border-style: solid; z-index: 9999; 
+        left: 50%; padding:11px; position: absolute; width: 600px; margin-left: -240px; top:100px; } 
+        .popupBackground{ background-color:black; opacity: 0.20; filter: alpha(opacity = 20); 
+        position: absolute; width: 100%; height: 100%; top: 0; left: 0; z-index: 9998; } 
+    </style>
+    <apex:form id="frm" >
+        <apex:actionFunction name="getAttachments" action="{!getAttachments}" />
+        <apex:actionFunction name="getObjectRecords" action="{!getObjectRecords}" reRender="displayRecord"/>
+        <apex:actionFunction name="onChangeFun" action="{!unselectHeader}" reRender="frm" />
+        <apex:actionFunction name="headerChkbox" action="{!checkboxHeader}" reRender="frm" />
+        <apex:actionFunction name="copyButton" action="{!copyButton}" reRender="frm" />
+        <apex:pageBlock >
+            <apex:pageBlockButtons >
+                <apex:commandButton value="Merge" action="{!mergePopup}" rendered="{!isMerge}"/>
+            </apex:pageBlockButtons>
+            <apex:pageBlockSection columns="2" collapsible="false" title="Merge Attachments">
+                <apex:outputLabel >Selected Object</apex:outputLabel>
+                <apex:selectList size="1" value="{!selectedObject}" onchange="getAttachments();" >
+                    <apex:selectOption itemLabel="-- None --" itemValue="" ></apex:selectOption>
+                    <apex:selectOptions value="{!objOptionList}"></apex:selectOptions>
+                </apex:selectList>
+            </apex:pageBlockSection>
+            
+            <apex:pageBlockSection columns="1" collapsible="false" title="{!selectedObject} Attachments" rendered="{!showAttachment}"  >
+                <apex:pageBlockTable value="{!attachmentWrapperList}" var="attachment">
+                    <apex:column value="{!attachment.rowNumber}" headerValue="#"/>
+                    <apex:column >
+                        <apex:facet name="header">
+                            <apex:inputCheckbox onChange="headerChkbox();" value="{!isHeaderChecked}" id="headerCheckbox" />
+                        </apex:facet>
+                        <apex:inputCheckbox value="{!attachment.isChecked}" id="checkboxId" onchange="onChangeFun();" />
+                    </apex:column>
+                    <apex:column value="{!attachment.attachmentObj.Name}" headerValue="Attachment Name"/>
+                    <apex:column headerValue="Preview">
+                        <apex:image width="40" height="40"
+                                    url="{!URLFOR($Action.Attachment.Download, attachment.attachmentObj.Id)}"/>
+                    </apex:column>
+                </apex:pageBlockTable>
+            </apex:pageBlockSection>
+            
+            <apex:outputPanel id="popupPanel" rendered="{!showPopup}"> 
+                <apex:outputPanel styleClass="popupBackground" layout="block" /> 
+                <apex:outputPanel styleClass="custPopup" layout="block" >
+                    <apex:pageBlock > 
+                        <apex:pageBlockButtons >
+                            <apex:commandButton value="Cancel" action="{!cancel}" reRender="frm"/>
+                            <apex:commandButton value="Copy" action="{!copy}" reRender="frm" rendered="{!isCopy}"/>
+                        </apex:pageBlockButtons>
+                        <apex:pageBlockSection columns="1" collapsible="false" title="Merge Attachments">
+                            <apex:outputLabel >Selected Object</apex:outputLabel>
+                            <apex:selectList size="1" value="{!mergeObject}" onchange="getObjectRecords();" >
+                                <apex:selectOption itemLabel="-- None --" itemValue="" ></apex:selectOption>
+                                <apex:selectOptions value="{!objOptionList}"></apex:selectOptions>
+                            </apex:selectList>
+                        </apex:pageBlockSection>
+                        
+                        <apex:pageBlockSection columns="1" collapsible="false" title="{!mergeObject} Records"
+                                               id="displayRecord" >
+                            <apex:pageBlockTable value="{!objectWrapperList}" var="record">
+                                <apex:column value="{!record.rowNumber}" headerValue="#"/>
+                                <apex:column headerValue="Action">
+                                    <apex:inputCheckbox value="{!record.isChecked}" onclick="copyButton();"/>
+                                </apex:column>
+                                <apex:column headerValue="Name" >
+                                    <apex:repeat value="{!record.recordObj}" var="obj">
+                                        {!obj['Name']}
+                                    </apex:repeat>
+                                </apex:column>
+                            </apex:pageBlockTable>
+                        </apex:pageBlockSection> 
+                    </apex:pageBlock>
+                </apex:outputPanel> 
+            </apex:outputPanel> 
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

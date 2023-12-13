@@ -1,0 +1,18 @@
+<apex:page showHeader="false" Controller="AggrimentCheckController" >
+    <apex:slds />
+    <apex:form >
+        <apex:pageBlock >
+            <div class="slds-align_absolute-center slds-m-around_large" style="height:5rem">
+            <apex:pageBlockSection columns="1">  
+                <div class="slds-form-element__control">
+ 				<apex:inputText value="{!recordId}" html-placeholder="Enter Record ID" />
+                </div>                                
+                <apex:pageBlockSectionItem >
+                    <apex:inputCheckbox value="{!checkBoxValue}"/>I accept Terms and Conditions.
+                </apex:pageBlockSectionItem>
+                <apex:commandButton value="Update" action="{!updateAggriment}"/>
+            </apex:pageBlockSection>
+            </div>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

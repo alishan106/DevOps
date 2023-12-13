@@ -1,0 +1,18 @@
+<template>
+    <lightning-card title="Lightning Card" >
+    <p>Hello, World !!</p>
+    <p>If you've installed Node.js on your computer, you can use npm to install Salesforce CLI. This method lets you install Salesforce CLI from the command line and can be especially useful for continuous integration (CI) use cases.
+        This installation method is a good option if you don’t have administrator permissions on your workstation, or if group policy blocks CLI installation and updates. Installing the CLI with npm doesn’t require root permissions.
+    </p>
+    </lightning-card>
+    <lightning-input type="text" value={name}></lightning-input>
+    <template for:each={contactList} for:item="item" for:index="index">
+        <li key={item.userId}>
+            {item.userName}
+            {item.userMail}
+            {item.userId}
+            {index}
+        </li>
+    </template>
+    <lightning-button label="Check Value" onclick={demo}></lightning-button>
+</template>

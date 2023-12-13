@@ -1,0 +1,42 @@
+<template>
+    <lightning-card title="Choose a bike to add ">
+        <lightning-layout class="slds-m-around_large">
+            <lightning-layout-item size="6">
+            <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+                <thead>
+                    <tr class="slds-line-height_reset">
+                        <th>
+                            <h1>Action</h1>
+                        </th>
+                        <th>
+                            <h1>Bike Name</h1>
+                        </th>
+                        <th>
+                            <h1>Number of Item</h1>
+                        </th>
+                    </tr>
+                </thead>
+                    <template for:each={bikes} for:item="bike">
+                        <tr key={bike} class="slds-line-height_reset">
+                            <td>
+                                <lightning-input type="checkbox" value={bike.Id} onchange={handleChange}
+                                    class={bike.Id}>
+                                </lightning-input>
+                            </td>
+                            <td>{bike.Name}</td>
+                            <td>{bike.Quantity}</td>
+                        </tr>
+                    </template>
+            </table>
+        </lightning-layout-item>
+        <lightning-layout-item size="6">
+        
+        <div class="slds-m-around_large">
+            <c-parent-Child bike-id={selectedbike} onsimpleevent={handleSimpleEvent}></c-parent-Child>
+        </div>
+        </lightning-layout-item>
+        </lightning-layout>
+        
+    </lightning-card>
+
+</template>
