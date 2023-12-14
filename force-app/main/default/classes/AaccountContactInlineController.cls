@@ -28,6 +28,7 @@ public class AaccountContactInlineController {
             if(!wrapObj.flag){
                 wrapperConList.add(new CheckBoxWrapper(false,wrapObj.conObj));
                 system.debug('!!!!!!');
+                system.debug('2222!!!!!!');
             }
         }
         contactList.remove(index);  
